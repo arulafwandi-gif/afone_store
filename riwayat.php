@@ -41,7 +41,29 @@ function rupiah($angka){
     .nav-item i { font-size: 18px; }
     .nav-item:hover { background: #2a2a2a; color: #fff; }
     .nav-item.active { background: var(--red); color: #fff; }
-    .sidebar-footer { margin-top: auto; padding: 0 0.5rem; font-size: 11px; color: #444; }
+    .nav-spacer { flex: 1; }
+
+.nav-logout {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 12px;
+  border-radius: 8px;
+  font-size: 14px;
+  color: #e74c3c;
+  text-decoration: none;
+  margin-bottom: 8px;
+  transition: background 0.12s;
+}
+.nav-logout i { font-size: 18px; }
+.nav-logout:hover { background: rgba(231,76,60,0.1); color: #ff6b6b; }
+
+.sidebar-footer {
+  padding: 10px 0.5rem 0;
+  font-size: 11px;
+  color: #444;
+  border-top: 0.5px solid #2a2a2a;
+}
 
     /* MAIN */
     .main { margin-left: 240px; padding: 2rem 2.5rem; min-height: 100vh; }
@@ -121,14 +143,12 @@ function rupiah($angka){
   <a href="laporan.php" class="nav-item ">
     <i class="ti ti-chart-bar"></i> Laporan
   </a>
+  
+<div class="nav-spacer"></div>
 
-  <a href="logout.php" class="nav-item" style="color:#ff6b6b; margin-bottom: 8px;">
-  <i class="ti ti-logout"></i> Logout
-</a>
+<a href="logout.php" class="nav-logout"><i class="ti ti-logout"></i> Logout</a>
 
-  <div class="sidebar-footer">
-    &copy; <?= date('Y') ?> BaleSepatuMantan
-  </div>
+<div class="sidebar-footer">&copy; <?= date('Y') ?> BaleSepatuMantan</div>
   
 </aside>
 

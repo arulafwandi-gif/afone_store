@@ -1,4 +1,5 @@
 <?php
+date_default_timezone_set('Asia/Makassar'); // WITA (UTC+8)
 $host = "localhost";
 $username = "root";
 $password = "";
