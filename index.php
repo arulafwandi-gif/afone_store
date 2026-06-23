@@ -22,38 +22,19 @@ require __DIR__ . '/includes/header.php';
     </div>
 </section>
 
-<section class="home-showcase">
+<section class="container home-block">
     <div class="container">
         <div class="home-promo-main">
             <div class="promo-copy">
                 <span class="section-kicker">AFone Flash Deal</span>
                 <h1>Beli kebutuhan game favoritmu lebih cepat.</h1>
-                <p>Top up diamond, UC, Robux, beli akun, dan order joki rank dalam satu website. Tampilan tetap orange-hitam, tapi alurnya dibuat seperti marketplace top up modern.</p>
+                <p>Top up diamond, UC, Robux, beli akun, dan order joki rank dalam satu website.</p>
                 <div class="promo-actions">
                     <a href="TopUp.php" class="btn btn-warning btn-lg fw-bold">Mulai Top Up</a>
                     <a href="Jokigame.php" class="btn btn-outline-light btn-lg">Cek Joki</a>
                 </div>
             </div>
-            <div class="promo-board">
-                <div class="sale-card sale-card-big">
-                    <small>FLASH SALE</small>
-                    <strong>TOP UP MOBILE LEGENDS</strong>
-                    <div class="sale-price-row">
-                        <span>Weekly Pass</span>
-                        <b>Rp 28.500</b>
-                    </div>
-                    <div class="sale-price-row">
-                        <span>86 Diamonds</span>
-                        <b>Rp 23.000</b>
-                    </div>
-                    <a href="TopUp.php" class="sale-link">Klik di sini</a>
-                </div>
-                <div class="sale-card sale-card-mini">
-                    <span>🎁</span>
-                    <strong>Beli akun ready</strong>
-                    <small>MLBB, FF, eFootball</small>
-                </div>
-            </div>
+           
         </div>
     </div>
 </section>
@@ -94,9 +75,7 @@ require __DIR__ . '/includes/header.php';
         <div>
             <span class="section-kicker">Jual Beli Akun</span>
             <h2>Stok akun game siap dipilih</h2>
-            <p class="text-soft">Section ini dibuat seperti etalase akun. Data akun bisa kamu tambah dari admin panel lengkap dengan foto, spesifikasi, harga, dan status.</p>
-            <div class="shop-tabs">
-                <a class="active" href="beli-akun.php">Semua Akun</a>
+
                 <a href="beli-akun.php?game_id=1">Mobile Legends</a>
                 <a href="beli-akun.php?game_id=2">Free Fire</a>
             </div>
