@@ -196,7 +196,6 @@ $hari  = mysqli_fetch_assoc($qHari);
   <a href="data_sepatu.php" class="nav-item"><i class="ti ti-shoe"></i> Data Barang</a>
   <a href="transaksi.php" class="nav-item"><i class="ti ti-shopping-cart"></i> Transaksi</a>
   <a href="laporan.php" class="nav-item"><i class="ti ti-chart-bar"></i> Laporan</a>
-  <a href="pengaturan.php" class="nav-item"><i class="ti ti-settings"></i> Pengaturan</a>
   <a href="profil.php" class="nav-item active"><i class="ti ti-user-circle"></i> Profil</a>
   <div class="nav-spacer"></div>
   <a href="logout.php" class="nav-logout"><i class="ti ti-logout"></i> Logout</a>

@@ -152,18 +152,15 @@ while($d = mysqli_fetch_assoc($qDetail)) $items[] = $d;
       <div class="brand-sub">Sistem Kasir</div>
     </div>
   </div>
-
   <p class="nav-label">Menu</p>
   <a href="index.php" class="nav-item"><i class="ti ti-layout-dashboard"></i> Dashboard</a>
   <a href="data_sepatu.php" class="nav-item"><i class="ti ti-shoe"></i> Data Barang</a>
-  <a href="transaksi.php" class="nav-item"><i class="ti ti-shopping-cart"></i> Transaksi</a>
+  <a href="transaksi.php" class="nav-item active"><i class="ti ti-shopping-cart"></i> Transaksi</a>
+  <a href="riwayat.php" class="nav-item"><i class="ti ti-history"></i> Riwayat</a>
   <a href="laporan.php" class="nav-item"><i class="ti ti-chart-bar"></i> Laporan</a>
-
-  <!-- spacer dorong logout & footer ke paling bawah -->
+  <a href="profil.php" class="nav-item"><i class="ti ti-user-circle"></i> Profil</a>
   <div class="nav-spacer"></div>
-
   <a href="logout.php" class="nav-logout"><i class="ti ti-logout"></i> Logout</a>
-
   <div class="sidebar-footer">&copy; <?= date('Y') ?> BaleSepatuMantan</div>
 </aside>
 

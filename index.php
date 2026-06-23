@@ -1,465 +1,219 @@
-<?php include "cek_login.php"; ?>
 <?php
-include "koneksi.php";
-
-function rupiah($angka){
-    return "Rp " . number_format($angka, 0, ',', '.');
-}
-
-$today = date("Y-m-d");
-
-$q1 = mysqli_query($koneksi,"
-    SELECT COUNT(*) as total_transaksi,
-           SUM(total_harga) as total_penjualan
-    FROM transaksi
-    WHERE DATE(tanggal)='$today'
-");
-$todayData = mysqli_fetch_assoc($q1);
-
-$q2 = mysqli_query($koneksi,"SELECT COUNT(*) as total_produk FROM `data barang`");
-$totalProduk = mysqli_fetch_assoc($q2);
-
-$q3 = mysqli_query($koneksi,"SELECT COUNT(*) as stok_tipis FROM `data barang` WHERE stok < 5");
-$stokTipis = mysqli_fetch_assoc($q3);
+require_once __DIR__ . '/includes/helpers.php';
+$pageTitle = 'AFone Store - Top Up Game, Joki, dan Beli Akun';
+$activePage = 'home';
+$popularGames = get_popular_games(8);
+$allGames = get_games(true);
+$gamesForHome = $popularGames ?: array_slice($allGames, 0, 8);
+$accounts = get_game_accounts(true);
+$regularJoki = get_joki_services('reguler', true);
+$topPackages = array_slice(fallback_packages(), 0, 6);
+require __DIR__ . '/includes/header.php';
 ?>
-<!DOCTYPE html>
-<html lang="id">
-<head>
-  <meta charset="UTF-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Bale Sepatu Mantan — Kasir</title>
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css"/>
-  <link rel="preconnect" href="https://fonts.googleapis.com"/>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Inter:wght@400;500&display=swap" rel="stylesheet"/>
-  <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-    :root {
-      --red:       #C0392B;
-      --red-dark:  #922B21;
-      --red-light: #FADBD8;
-      --red-soft:  #FDEDEC;
-      --dark:      #1A1A1A;
-      --mid:       #3D3D3D;
-      --muted:     #888;
-      --border:    #E5E5E5;
-      --bg:        #F7F7F7;
-      --white:     #FFFFFF;
-    }
-
-    body {
-      font-family: 'Inter', sans-serif;
-      background: var(--bg);
-      min-height: 100vh;
-      color: var(--dark);
-    }
-
-    /* ── SIDEBAR ── */
-    .sidebar {
-      position: fixed;
-      top: 0; left: 0;
-      width: 240px;
-      height: 100vh;
-      background: var(--dark);
-      display: flex;
-      flex-direction: column;
-      padding: 1.5rem 1rem;
-      z-index: 10;
-    }
-
-    .brand {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      padding: 0.5rem 0.5rem 1.75rem;
-      border-bottom: 0.5px solid #333;
-      margin-bottom: 1.5rem;
-    }
-
-    .brand-logo {
-      width: 44px;
-      height: 44px;
-      border-radius: 50%;
-      object-fit: cover;
-      border: 2px solid var(--red);
-      flex-shrink: 0;
-    }
-
-    .brand-name {
-      font-family: 'Playfair Display', serif;
-      font-size: 14px;
-      color: #fff;
-      line-height: 1.3;
-    }
-
-    .brand-sub {
-      font-size: 11px;
-      color: #666;
-      margin-top: 2px;
-    }
-
-    .nav-label {
-      font-size: 10px;
-      font-weight: 500;
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-      color: #555;
-      padding: 0 0.75rem;
-      margin-bottom: 0.5rem;
-    }
-
-    .nav-item {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      padding: 10px 12px;
-      border-radius: 8px;
-      font-size: 14px;
-      color: #aaa;
-      text-decoration: none;
-      transition: background 0.12s, color 0.12s;
-      margin-bottom: 2px;
-    }
-
-    .nav-item i { font-size: 18px; }
-
-    .nav-item:hover {
-      background: #2a2a2a;
-      color: #fff;
-    }
-
-    .nav-item.active {
-      background: var(--red);
-      color: #fff;
-    }
-
-    .nav-spacer { flex: 1; }
-
-.nav-logout {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  padding: 10px 12px;
-  border-radius: 8px;
-  font-size: 14px;
-  color: #e74c3c;
-  text-decoration: none;
-  margin-bottom: 8px;
-  transition: background 0.12s;
-}
-.nav-logout i { font-size: 18px; }
-.nav-logout:hover { background: rgba(231,76,60,0.1); color: #ff6b6b; }
-
-.sidebar-footer {
-  padding: 10px 0.5rem 0;
-  font-size: 11px;
-  color: #444;
-  border-top: 0.5px solid #2a2a2a;
-}
-
-    /* ── MAIN ── */
-    .main {
-      margin-left: 240px;
-      padding: 2rem 2.5rem;
-      min-height: 100vh;
-    }
-
-    .topbar {
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-start;
-      margin-bottom: 2rem;
-    }
-
-    .page-title {
-      font-family: 'Playfair Display', serif;
-      font-size: 26px;
-      color: var(--dark);
-    }
-
-    .page-sub {
-      font-size: 13px;
-      color: var(--muted);
-      margin-top: 3px;
-    }
-
-    .date-badge {
-      display: flex;
-      align-items: center;
-      gap: 7px;
-      background: var(--white);
-      border: 0.5px solid var(--border);
-      border-radius: 8px;
-      padding: 8px 16px;
-      font-size: 13px;
-      color: var(--mid);
-    }
-
-    .date-badge i { color: var(--red); }
-
-    /* ── STATS ── */
-    .stats-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 14px;
-      margin-bottom: 1.75rem;
-    }
-
-    .stat-card {
-      background: var(--white);
-      border: 0.5px solid var(--border);
-      border-radius: 12px;
-      padding: 1.25rem;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .stat-card::before {
-      content: '';
-      position: absolute;
-      top: 0; left: 0;
-      width: 4px;
-      height: 100%;
-      background: var(--red);
-      border-radius: 12px 0 0 12px;
-    }
-
-    .stat-icon {
-      width: 38px;
-      height: 38px;
-      border-radius: 9px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 19px;
-      margin-bottom: 0.75rem;
-      background: var(--red-soft);
-      color: var(--red);
-    }
-
-    .stat-label {
-      font-size: 12px;
-      color: var(--muted);
-      margin-bottom: 4px;
-    }
-
-    .stat-value {
-      font-size: 26px;
-      font-weight: 500;
-      color: var(--dark);
-    }
-
-    .stat-value.rupiah { font-size: 18px; }
-
-    /* ── ALERT ── */
-    .alert {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      background: var(--red-soft);
-      border: 0.5px solid var(--red-light);
-      border-radius: 10px;
-      padding: 1rem 1.25rem;
-      margin-bottom: 2rem;
-      font-size: 14px;
-      color: var(--red-dark);
-    }
-
-    .alert i { font-size: 20px; flex-shrink: 0; }
-    .alert strong { font-weight: 500; }
-
-    /* ── MENU ── */
-    .section-title {
-      font-size: 12px;
-      font-weight: 500;
-      text-transform: uppercase;
-      letter-spacing: 0.07em;
-      color: var(--muted);
-      margin-bottom: 1rem;
-    }
-
-    .menu-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 14px;
-    }
-
-    .menu-card {
-      background: var(--white);
-      border: 0.5px solid var(--border);
-      border-radius: 12px;
-      padding: 1.25rem 1.5rem;
-      text-decoration: none;
-      display: flex;
-      align-items: center;
-      gap: 16px;
-      transition: border-color 0.15s, box-shadow 0.15s;
-    }
-
-    .menu-card:hover {
-      border-color: var(--red);
-      box-shadow: 0 0 0 3px var(--red-soft);
-    }
-
-    .menu-card-icon {
-      width: 46px;
-      height: 46px;
-      border-radius: 11px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 22px;
-      flex-shrink: 0;
-      background: var(--red-soft);
-      color: var(--red);
-    }
-
-    .menu-card-label {
-      font-weight: 500;
-      font-size: 15px;
-      color: var(--dark);
-    }
-
-    .menu-card-desc {
-      font-size: 12px;
-      color: var(--muted);
-      margin-top: 3px;
-    }
-
-    .menu-card-arrow {
-      margin-left: auto;
-      color: #ccc;
-      font-size: 18px;
-    }
-
-    .menu-card:hover .menu-card-arrow { color: var(--red); }
-
-    @media (max-width: 900px) {
-      .stats-grid { grid-template-columns: repeat(2, 1fr); }
-    }
-
-    @media (max-width: 640px) {
-      .sidebar { display: none; }
-      .main { margin-left: 0; padding: 1rem; }
-      .stats-grid { grid-template-columns: repeat(2, 1fr); }
-      .menu-grid { grid-template-columns: 1fr; }
-    }
-  </style>
-</head>
-<body>
-
-<aside class="sidebar">
-  <div class="brand">
-    <!-- Ganti "logo.png" dengan nama file logo kamu -->
-    <img src="508672227_17903328033191189_6852045551131810257_n.jpg" alt="BaleSepatuMantan" class="brand-logo"/>
-    <div>
-      <div class="brand-name">Bale Sepatu Mantan</div>
-      <div class="brand-sub">Sistem Kasir</div>
+<section class="home-ticker">
+    <div class="container">
+        <div class="ticker-track">
+            <span>🔥 Promo top up hari ini</span>
+            <span>💎 Diamond MLBB & FF tersedia</span>
+            <span>⚡ Order cepat diproses admin</span>
+            <span>🛡️ Data akun aman dan bisa dicek</span>
+            <span>🎮 Joki rank reguler dan express</span>
+        </div>
     </div>
-  </div>
+</section>
 
-  <p class="nav-label">Menu</p>
-  <a href="index.php" class="nav-item active">
-    <i class="ti ti-layout-dashboard"></i> Dashboard
-  </a>
-  <a href="data_sepatu.php" class="nav-item">
-    <i class="ti ti-shoe"></i> Data Barang
-  </a>
-  <a href="transaksi.php" class="nav-item">
-    <i class="ti ti-shopping-cart"></i> Transaksi
-  </a>
-  <a href="laporan.php" class="nav-item">
-    <i class="ti ti-chart-bar"></i> Laporan
-  </a>
-
-  <div class="nav-spacer"></div>
-
-<a href="logout.php" class="nav-logout"><i class="ti ti-logout"></i> Logout</a>
-
-<div class="sidebar-footer">&copy; <?= date('Y') ?> BaleSepatuMantan</div>
-</aside>
-
-
-
-<main class="main">
-
-  <div class="topbar">
-    <div>
-      <div class="page-title">Dashboard</div>
-      <div class="page-sub">Selamat datang di Sistem Kasir</div>
+<section class="home-showcase">
+    <div class="container">
+        <div class="home-promo-main">
+            <div class="promo-copy">
+                <span class="section-kicker">AFone Flash Deal</span>
+                <h1>Beli kebutuhan game favoritmu lebih cepat.</h1>
+                <p>Top up diamond, UC, Robux, beli akun, dan order joki rank dalam satu website. Tampilan tetap orange-hitam, tapi alurnya dibuat seperti marketplace top up modern.</p>
+                <div class="promo-actions">
+                    <a href="TopUp.php" class="btn btn-warning btn-lg fw-bold">Mulai Top Up</a>
+                    <a href="Jokigame.php" class="btn btn-outline-light btn-lg">Cek Joki</a>
+                </div>
+            </div>
+            <div class="promo-board">
+                <div class="sale-card sale-card-big">
+                    <small>FLASH SALE</small>
+                    <strong>TOP UP MOBILE LEGENDS</strong>
+                    <div class="sale-price-row">
+                        <span>Weekly Pass</span>
+                        <b>Rp 28.500</b>
+                    </div>
+                    <div class="sale-price-row">
+                        <span>86 Diamonds</span>
+                        <b>Rp 23.000</b>
+                    </div>
+                    <a href="TopUp.php" class="sale-link">Klik di sini</a>
+                </div>
+                <div class="sale-card sale-card-mini">
+                    <span>🎁</span>
+                    <strong>Beli akun ready</strong>
+                    <small>MLBB, FF, eFootball</small>
+                </div>
+            </div>
+        </div>
     </div>
-    <div class="date-badge">
-      <i class="ti ti-calendar"></i>
-      <?= date('l, d F Y') ?>
-    </div>
-  </div>
+</section>
 
-  <div class="stats-grid">
-    <div class="stat-card">
-      <div class="stat-icon"><i class="ti ti-receipt"></i></div>
-      <div class="stat-label">Transaksi Hari Ini</div>
-      <div class="stat-value"><?= $todayData['total_transaksi'] ?? 0 ?></div>
+<section class="container home-block">
+    <div class="home-section-head text-center">
+        <span class="section-kicker">Top Up</span>
+        <h2>Game populer di AFone Store</h2>
+        <p>Cari game, pilih nominal, isi ID, lalu order langsung masuk ke dashboard admin.</p>
     </div>
-    <div class="stat-card">
-      <div class="stat-icon"><i class="ti ti-coin"></i></div>
-      <div class="stat-label">Penjualan Hari Ini</div>
-      <div class="stat-value rupiah"><?= rupiah($todayData['total_penjualan'] ?? 0) ?></div>
-    </div>
-    <div class="stat-card">
-      <div class="stat-icon"><i class="ti ti-box"></i></div>
-      <div class="stat-label">Total Produk</div>
-      <div class="stat-value"><?= $totalProduk['total_produk'] ?></div>
-    </div>
-    <div class="stat-card">
-      <div class="stat-icon"><i class="ti ti-alert-triangle"></i></div>
-      <div class="stat-label">Stok Menipis (&lt;5)</div>
-      <div class="stat-value"><?= $stokTipis['stok_tipis'] ?></div>
-    </div>
-  </div>
 
-  <?php if (($stokTipis['stok_tipis'] ?? 0) > 0): ?>
-  <div class="alert">
-    <i class="ti ti-alert-triangle"></i>
-    <span>Terdapat <strong><?= $stokTipis['stok_tipis'] ?> produk</strong> dengan stok di bawah 5 unit. Segera lakukan restok.</span>
-  </div>
-  <?php endif; ?>
+    <form action="TopUp.php" method="get" class="home-search-wrap">
+        <input type="text" name="q" class="form-control" placeholder="Cari game favoritmu, misalnya Mobile Legends atau Free Fire...">
+        <button class="btn btn-warning fw-bold" type="submit">Cari</button>
+    </form>
 
-  <p class="section-title">Menu Utama</p>
-  <div class="menu-grid">
-    <a href="data_sepatu.php" class="menu-card">
-      <div class="menu-card-icon"><i class="ti ti-shoe"></i></div>
-      <div>
-        <div class="menu-card-label">Data Barang</div>
-        <div class="menu-card-desc">Kelola produk &amp; stok sepatu</div>
-      </div>
-      <i class="ti ti-chevron-right menu-card-arrow"></i>
-    </a>
-    <a href="transaksi.php" class="menu-card">
-      <div class="menu-card-icon"><i class="ti ti-shopping-cart"></i></div>
-      <div>
-        <div class="menu-card-label">Transaksi</div>
-        <div class="menu-card-desc">Catat penjualan baru</div>
-      </div>
-      <i class="ti ti-chevron-right menu-card-arrow"></i>
-    </a>
-    <a href="laporan.php" class="menu-card">
-      <div class="menu-card-icon"><i class="ti ti-chart-bar"></i></div>
-      <div>
-        <div class="menu-card-label">Laporan</div>
-        <div class="menu-card-desc">Riwayat &amp; grafik penjualan</div>
-      </div>
-      <i class="ti ti-chevron-right menu-card-arrow"></i>
-    </a>
-    <a href="profil.php" class="menu-card">
-      <div class="menu-card-icon"><i class="ti ti-user-circle"></i></div>
-      <div>
-        <div class="menu-card-label">Profil Toko</div>
-        <div class="menu-card-desc">Kelola informasi toko</div>
-      </div>
-      <i class="ti ti-chevron-right menu-card-arrow"></i>
-    </a>
-  </div>
+    <div class="home-popular-grid">
+        <?php foreach (array_slice($gamesForHome, 0, 6) as $game): ?>
+            <a class="home-game-tile" href="game.php?slug=<?= e($game['slug']) ?>">
+                <div class="home-game-thumb">
+                    <?php if (!empty($game['image_url'])): ?>
+                        <img src="<?= e(image_src($game['image_url'])) ?>" alt="<?= e($game['name']) ?>">
+                    <?php else: ?>
+                        <span><?= e($game['icon_emoji'] ?: '🎮') ?></span>
+                    <?php endif; ?>
+                </div>
+                <div>
+                    <strong><?= e($game['name']) ?></strong>
+                    <small><?= count(get_packages_by_game((int)$game['id'])) ?> nominal tersedia</small>
+                </div>
+            </a>
+        <?php endforeach; ?>
+    </div>
+</section>
 
-</main>
-</body>
-</html>
+<section class="container home-block">
+    <div class="dual-shop-card">
+        <div>
+            <span class="section-kicker">Jual Beli Akun</span>
+            <h2>Stok akun game siap dipilih</h2>
+            <p class="text-soft">Section ini dibuat seperti etalase akun. Data akun bisa kamu tambah dari admin panel lengkap dengan foto, spesifikasi, harga, dan status.</p>
+            <div class="shop-tabs">
+                <a class="active" href="beli-akun.php">Semua Akun</a>
+                <a href="beli-akun.php?game_id=1">Mobile Legends</a>
+                <a href="beli-akun.php?game_id=2">Free Fire</a>
+            </div>
+        </div>
+        <a href="beli-akun.php" class="btn btn-warning fw-bold">Lihat Beli Akun</a>
+    </div>
+
+    <div class="home-account-row">
+        <?php foreach (array_slice($accounts, 0, 3) as $account): ?>
+            <article class="home-account-card">
+                <div class="home-account-image">
+                    <?php if (!empty($account['image_url'])): ?>
+                        <img src="<?= e(image_src($account['image_url'])) ?>" alt="<?= e($account['title']) ?>">
+                    <?php elseif (!empty($account['game_image'])): ?>
+                        <img src="<?= e(image_src($account['game_image'])) ?>" alt="<?= e($account['game_name']) ?>">
+                    <?php else: ?>
+                        <span><?= e($account['game_icon'] ?? '🎮') ?></span>
+                    <?php endif; ?>
+                    <em><?= e(strtoupper($account['status'] ?? 'TERSEDIA')) ?></em>
+                </div>
+                <div class="home-account-body">
+                    <small><?= e($account['game_name'] ?? 'Game') ?></small>
+                    <h3><?= e($account['title']) ?></h3>
+                    <p><?= e($account['specs'] ?? $account['description']) ?></p>
+                    <div class="d-flex justify-content-between align-items-center gap-2">
+                        <strong><?= rupiah($account['price']) ?></strong>
+                        <a href="beli-akun.php" class="btn btn-sm btn-outline-warning">Detail</a>
+                    </div>
+                </div>
+            </article>
+        <?php endforeach; ?>
+    </div>
+</section>
+
+<section class="home-why-section">
+    <div class="container">
+        <div class="home-section-head text-center">
+            <span class="section-kicker">Kenapa AFone?</span>
+            <h2>Layanan game dibuat lebih praktis</h2>
+        </div>
+        <div class="home-why-grid">
+            <div class="home-why-card"><div>⚡</div><h4>Proses Kilat</h4><p>Order tersimpan otomatis agar admin bisa langsung cek dan update status.</p></div>
+            <div class="home-why-card"><div>⭐</div><h4>Harga Tertata</h4><p>Nominal top up dan harga joki bisa diedit dari CRUD admin.</p></div>
+            <div class="home-why-card"><div>🛡️</div><h4>Aman Bergaransi</h4><p>Data order, WhatsApp, dan detail game tercatat lebih rapi di database.</p></div>
+        </div>
+    </div>
+</section>
+
+<section class="container home-block">
+    <div class="home-section-head text-center">
+        <span class="section-kicker">Joki & Top Up</span>
+        <h2>Layanan cepat untuk banyak game</h2>
+        <p>Pakai baris kartu horizontal supaya halaman utama terlihat hidup tanpa meniru desain referensi secara mentah.</p>
+    </div>
+    <div class="home-scroll-row">
+        <?php foreach (array_slice($allGames, 0, 10) as $game): ?>
+            <a class="home-scroll-chip" href="game.php?slug=<?= e($game['slug']) ?>">
+                <span><?php if (!empty($game['image_url'])): ?><img src="<?= e(image_src($game['image_url'])) ?>" alt="<?= e($game['name']) ?>"><?php else: ?><?= e($game['icon_emoji'] ?: '🎮') ?><?php endif; ?></span>
+                <b><?= e($game['name']) ?></b>
+            </a>
+        <?php endforeach; ?>
+    </div>
+</section>
+
+<section class="container home-block">
+    <div class="home-joki-price-card">
+        <div class="d-flex justify-content-between align-items-end flex-wrap gap-3 mb-3">
+            <div>
+                <span class="section-kicker">Joki Rank</span>
+                <h2 class="mb-1">Daftar harga joki reguler</h2>
+                <p class="text-soft mb-0">Tampilan ringkas di halaman utama, detail lengkap tetap ada di menu Joki.</p>
+            </div>
+            <a href="Jokigame.php" class="btn btn-warning fw-bold">Buka Kalkulator</a>
+        </div>
+        <div class="home-joki-mini-grid">
+            <?php foreach (array_slice($regularJoki, 0, 6) as $service): ?>
+                <div class="home-joki-mini">
+                    <span><?= e($service['icon'] ?? '🏆') ?></span>
+                    <div><strong><?= e($service['rank_name']) ?></strong><small><?= rupiah($service['price']) ?></small></div>
+                </div>
+            <?php endforeach; ?>
+        </div>
+    </div>
+</section>
+
+<section class="container home-block">
+    <div class="home-section-head text-center">
+        <span class="section-kicker">Info Terbaru</span>
+        <h2>Update seputar game dan promo</h2>
+    </div>
+    <div class="home-info-grid">
+        <article class="home-info-card"><div>💎</div><h4>Promo diamond MLBB</h4><p>Cek nominal favorit seperti Weekly Pass, 86 Diamonds, dan 172 Diamonds.</p><a href="TopUp.php">Cek Top Up</a></article>
+        <article class="home-info-card"><div>🔥</div><h4>Bundle Free Fire</h4><p>Siapkan diamond FF untuk event, bundle, dan membership mingguan.</p><a href="game.php?slug=free-fire">Lihat FF</a></article>
+        <article class="home-info-card"><div>👑</div><h4>Joki push rank</h4><p>Pakai kalkulator joki untuk menghitung target rank dan layanan express.</p><a href="Jokigame.php">Hitung Joki</a></article>
+    </div>
+</section>
+
+<section class="container home-block">
+    <div class="home-faq-card">
+        <div class="home-section-head text-center">
+            <span class="section-kicker">FAQ</span>
+            <h2>Pertanyaan yang sering ditanyakan</h2>
+        </div>
+        <div class="accordion accordion-flush" id="homeFaq">
+            <div class="accordion-item home-faq-item">
+                <h2 class="accordion-header"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq1">Apa itu AFone Store?</button></h2>
+                <div id="faq1" class="accordion-collapse collapse" data-bs-parent="#homeFaq"><div class="accordion-body">AFone Store adalah website PHP MySQL untuk layanan top up game, joki rank, beli akun, dan pengelolaan data melalui admin panel.</div></div>
+            </div>
+            <div class="accordion-item home-faq-item">
+                <h2 class="accordion-header"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq2">Apakah nominal diamond bisa diubah?</button></h2>
+                <div id="faq2" class="accordion-collapse collapse" data-bs-parent="#homeFaq"><div class="accordion-body">Bisa. Masuk ke dashboard admin, lalu buka menu CRUD Nominal untuk tambah, edit, hapus, atau menonaktifkan paket.</div></div>
+            </div>
+            <div class="accordion-item home-faq-item">
+                <h2 class="accordion-header"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq3">Bagaimana menambahkan foto game?</button></h2>
+                <div id="faq3" class="accordion-collapse collapse" data-bs-parent="#homeFaq"><div class="accordion-body">Masuk ke admin, buka CRUD Game, klik tambah atau edit game, lalu gunakan tombol upload gambar.</div></div>
+            </div>
+        </div>
+    </div>
+</section>
+<?php require __DIR__ . '/includes/footer.php'; ?>

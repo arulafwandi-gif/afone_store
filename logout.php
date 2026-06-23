@@ -1,6 +1,6 @@
 <?php
-session_start();
+require_once __DIR__ . '/includes/helpers.php';
 session_destroy();
-header("Location: login.php");
-exit;
-?>
+session_start();
+flash('Kamu sudah logout.', 'success');
+redirect('login.php');

@@ -79,14 +79,8 @@ if(isset($_POST['update'])){
 
     body { font-family: 'Inter', sans-serif; background: var(--bg); min-height: 100vh; color: var(--dark); }
 
-    /* SIDEBAR */
-    .sidebar {
-      position: fixed; top: 0; left: 0;
-      width: 240px; height: 100vh;
-      background: var(--dark);
-      display: flex; flex-direction: column;
-      padding: 1.5rem 1rem; z-index: 10;
-    }
+     /* SIDEBAR */
+    .sidebar { position: fixed; top: 0; left: 0; width: 240px; height: 100vh; background: var(--dark); display: flex; flex-direction: column; padding: 1.5rem 1rem 1rem; z-index: 10; }
     .brand { display: flex; align-items: center; gap: 12px; padding: 0.5rem 0.5rem 1.75rem; border-bottom: 0.5px solid #333; margin-bottom: 1.5rem; }
     .brand-logo { width: 44px; height: 44px; border-radius: 50%; object-fit: cover; border: 2px solid var(--red); flex-shrink: 0; }
     .brand-name { font-family: 'Playfair Display', serif; font-size: 14px; color: #fff; line-height: 1.3; }
@@ -97,28 +91,10 @@ if(isset($_POST['update'])){
     .nav-item:hover { background: #2a2a2a; color: #fff; }
     .nav-item.active { background: var(--red); color: #fff; }
     .nav-spacer { flex: 1; }
-
-.nav-logout {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  padding: 10px 12px;
-  border-radius: 8px;
-  font-size: 14px;
-  color: #e74c3c;
-  text-decoration: none;
-  margin-bottom: 8px;
-  transition: background 0.12s;
-}
-.nav-logout i { font-size: 18px; }
-.nav-logout:hover { background: rgba(231,76,60,0.1); color: #ff6b6b; }
-
-.sidebar-footer {
-  padding: 10px 0.5rem 0;
-  font-size: 11px;
-  color: #444;
-  border-top: 0.5px solid #2a2a2a;
-}
+    .nav-logout { display: flex; align-items: center; gap: 10px; padding: 10px 12px; border-radius: 8px; font-size: 14px; color: #e74c3c; text-decoration: none; margin-bottom: 8px; transition: background 0.12s; }
+    .nav-logout i { font-size: 18px; }
+    .nav-logout:hover { background: rgba(231,76,60,0.1); color: #ff6b6b; }
+    .sidebar-footer { padding: 10px 0.5rem 0; font-size: 11px; color: #444; border-top: 0.5px solid #2a2a2a; }
     /* MAIN */
     .main { margin-left: 240px; padding: 2rem 2.5rem; min-height: 100vh; }
 
@@ -261,38 +237,27 @@ if(isset($_POST['update'])){
 </head>
 <body>
 
+<!-- SIDEBAR -->
 <aside class="sidebar">
   <div class="brand">
-    <!-- Ganti "logo.png" dengan nama file logo kamu -->
     <img src="508672227_17903328033191189_6852045551131810257_n.jpg" alt="BaleSepatuMantan" class="brand-logo"/>
     <div>
       <div class="brand-name">Bale Sepatu Mantan</div>
       <div class="brand-sub">Sistem Kasir</div>
     </div>
   </div>
-
   <p class="nav-label">Menu</p>
-  <a href="index.php" class="nav-item ">
-    <i class="ti ti-layout-dashboard"></i> Dashboard
-  </a>
-  <a href="data_sepatu.php" class="nav-item active">
-    <i class="ti ti-shoe"></i> Data Barang
-  </a>
-  <a href="transaksi.php" class="nav-item">
-    <i class="ti ti-shopping-cart"></i> Transaksi
-  </a>
-  <a href="laporan.php" class="nav-item">
-    <i class="ti ti-chart-bar"></i> Laporan
-  </a>
-
-    <div class="nav-spacer"></div>
-
+  <a href="index.php" class="nav-item "><i class="ti ti-layout-dashboard"></i> Dashboard</a>
+  <a href="data_sepatu.php" class="nav-item active"><i class="ti ti-shoe"></i> Data Barang</a>
+  <a href="transaksi.php" class="nav-item"><i class="ti ti-shopping-cart"></i> Transaksi</a>
+  <a href="riwayat.php" class="nav-item"><i class="ti ti-history"></i> Riwayat</a>
+  <a href="laporan.php" class="nav-item"><i class="ti ti-chart-bar"></i> Laporan</a>
+  <a href="profil.php" class="nav-item"><i class="ti ti-user-circle"></i> Profil</a>
+  <div class="nav-spacer"></div>
   <a href="logout.php" class="nav-logout"><i class="ti ti-logout"></i> Logout</a>
-
   <div class="sidebar-footer">&copy; <?= date('Y') ?> BaleSepatuMantan</div>
-
-
 </aside>
+
 <!-- MAIN -->
 <main class="main">
 
