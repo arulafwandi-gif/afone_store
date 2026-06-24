@@ -1,15 +1,23 @@
 <?php
 require_once __DIR__ . '/includes/helpers.php';
+
+// Set judul halaman dan halaman aktif untuk navigasi
 $pageTitle = 'AFone Store - Top Up Game, Joki, dan Beli Akun';
 $activePage = 'home';
+
+// Ambil data yang diperlukan untuk halaman utama
 $popularGames = get_popular_games(8);
 $allGames = get_games(true);
 $gamesForHome = $popularGames ?: array_slice($allGames, 0, 8);
 $accounts = get_game_accounts(true);
 $regularJoki = get_joki_services('reguler', true);
 $topPackages = array_slice(fallback_packages(), 0, 6);
+
+// Sertakan header
 require __DIR__ . '/includes/header.php';
 ?>
+
+<!-- Promo Ticker -->
 <section class="home-ticker">
     <div class="container">
         <div class="ticker-track">
@@ -22,28 +30,12 @@ require __DIR__ . '/includes/header.php';
     </div>
 </section>
 
-<section class="container home-block">
-    <div class="container">
-        <div class="home-promo-main">
-            <div class="promo-copy">
-                <span class="section-kicker">AFone Flash Deal</span>
-                <h1>Beli kebutuhan game favoritmu lebih cepat.</h1>
-                <p>Top up diamond, UC, Robux, beli akun, dan order joki rank dalam satu website.</p>
-                <div class="promo-actions">
-                    <a href="TopUp.php" class="btn btn-warning btn-lg fw-bold">Mulai Top Up</a>
-                    <a href="Jokigame.php" class="btn btn-outline-light btn-lg">Cek Joki</a>
-                </div>
-            </div>
-           
-        </div>
-    </div>
-</section>
 
+<!-- Game Populer -->
 <section class="container home-block">
     <div class="home-section-head text-center">
         <span class="section-kicker">Top Up</span>
-        <h2>Game populer di AFone Store</h2>
-        <p>Cari game, pilih nominal, isi ID, lalu order langsung masuk ke dashboard admin.</p>
+        <h2>AFone Store</h2>
     </div>
 
     <form action="TopUp.php" method="get" class="home-search-wrap">
@@ -70,15 +62,14 @@ require __DIR__ . '/includes/header.php';
     </div>
 </section>
 
+<!-- Jual Beli Akun -->
 <section class="container home-block">
     <div class="dual-shop-card">
         <div>
             <span class="section-kicker">Jual Beli Akun</span>
             <h2>Stok akun game siap dipilih</h2>
-
-                <a href="beli-akun.php?game_id=1">Mobile Legends</a>
-                <a href="beli-akun.php?game_id=2">Free Fire</a>
-            </div>
+            <a href="beli-akun.php?game_id=1">Mobile Legends</a>
+            <a href="beli-akun.php?game_id=2">Free Fire</a>
         </div>
         <a href="beli-akun.php" class="btn btn-warning fw-bold">Lihat Beli Akun</a>
     </div>
@@ -110,6 +101,7 @@ require __DIR__ . '/includes/header.php';
     </div>
 </section>
 
+<!-- Kenapa AFone -->
 <section class="home-why-section">
     <div class="container">
         <div class="home-section-head text-center">
@@ -117,13 +109,26 @@ require __DIR__ . '/includes/header.php';
             <h2>Layanan game dibuat lebih praktis</h2>
         </div>
         <div class="home-why-grid">
-            <div class="home-why-card"><div>⚡</div><h4>Proses Kilat</h4><p>Order tersimpan otomatis agar admin bisa langsung cek dan update status.</p></div>
-            <div class="home-why-card"><div>⭐</div><h4>Harga Tertata</h4><p>Nominal top up dan harga joki bisa diedit dari CRUD admin.</p></div>
-            <div class="home-why-card"><div>🛡️</div><h4>Aman Bergaransi</h4><p>Data order, WhatsApp, dan detail game tercatat lebih rapi di database.</p></div>
+            <div class="home-why-card">
+                <div>⚡</div>
+                <h4>Proses Kilat</h4>
+                <p>Order tersimpan otomatis agar admin bisa langsung cek dan update status.</p>
+            </div>
+            <div class="home-why-card">
+                <div>⭐</div>
+                <h4>Harga Tertata</h4>
+                <p>Nominal top up dan harga joki bisa diedit dari CRUD admin.</p>
+            </div>
+            <div class="home-why-card">
+                <div>🛡️</div>
+                <h4>Aman Bergaransi</h4>
+                <p>Data order, WhatsApp, dan detail game tercatat lebih rapi di database.</p>
+            </div>
         </div>
     </div>
 </section>
 
+<!-- Joki & Top Up -->
 <section class="container home-block">
     <div class="home-section-head text-center">
         <span class="section-kicker">Joki & Top Up</span>
@@ -133,13 +138,20 @@ require __DIR__ . '/includes/header.php';
     <div class="home-scroll-row">
         <?php foreach (array_slice($allGames, 0, 10) as $game): ?>
             <a class="home-scroll-chip" href="game.php?slug=<?= e($game['slug']) ?>">
-                <span><?php if (!empty($game['image_url'])): ?><img src="<?= e(image_src($game['image_url'])) ?>" alt="<?= e($game['name']) ?>"><?php else: ?><?= e($game['icon_emoji'] ?: '🎮') ?><?php endif; ?></span>
+                <span>
+                    <?php if (!empty($game['image_url'])): ?>
+                        <img src="<?= e(image_src($game['image_url'])) ?>" alt="<?= e($game['name']) ?>">
+                    <?php else: ?>
+                        <?= e($game['icon_emoji'] ?: '🎮') ?>
+                    <?php endif; ?>
+                </span>
                 <b><?= e($game['name']) ?></b>
             </a>
         <?php endforeach; ?>
     </div>
 </section>
 
+<!-- Daftar Harga Joki -->
 <section class="container home-block">
     <div class="home-joki-price-card">
         <div class="d-flex justify-content-between align-items-end flex-wrap gap-3 mb-3">
@@ -154,25 +166,45 @@ require __DIR__ . '/includes/header.php';
             <?php foreach (array_slice($regularJoki, 0, 6) as $service): ?>
                 <div class="home-joki-mini">
                     <span><?= e($service['icon'] ?? '🏆') ?></span>
-                    <div><strong><?= e($service['rank_name']) ?></strong><small><?= rupiah($service['price']) ?></small></div>
+                    <div>
+                        <strong><?= e($service['rank_name']) ?></strong>
+                        <small><?= rupiah($service['price']) ?></small>
+                    </div>
                 </div>
             <?php endforeach; ?>
         </div>
     </div>
 </section>
 
+<!-- Info Terbaru -->
 <section class="container home-block">
     <div class="home-section-head text-center">
         <span class="section-kicker">Info Terbaru</span>
         <h2>Update seputar game dan promo</h2>
     </div>
     <div class="home-info-grid">
-        <article class="home-info-card"><div>💎</div><h4>Promo diamond MLBB</h4><p>Cek nominal favorit seperti Weekly Pass, 86 Diamonds, dan 172 Diamonds.</p><a href="TopUp.php">Cek Top Up</a></article>
-        <article class="home-info-card"><div>🔥</div><h4>Bundle Free Fire</h4><p>Siapkan diamond FF untuk event, bundle, dan membership mingguan.</p><a href="game.php?slug=free-fire">Lihat FF</a></article>
-        <article class="home-info-card"><div>👑</div><h4>Joki push rank</h4><p>Pakai kalkulator joki untuk menghitung target rank dan layanan express.</p><a href="Jokigame.php">Hitung Joki</a></article>
+        <article class="home-info-card">
+            <div>💎</div>
+            <h4>Promo diamond MLBB</h4>
+            <p>Cek nominal favorit seperti Weekly Pass, 86 Diamonds, dan 172 Diamonds.</p>
+            <a href="TopUp.php">Cek Top Up</a>
+        </article>
+        <article class="home-info-card">
+            <div>🔥</div>
+            <h4>Bundle Free Fire</h4>
+            <p>Siapkan diamond FF untuk event, bundle, dan membership mingguan.</p>
+            <a href="game.php?slug=free-fire">Lihat FF</a>
+        </article>
+        <article class="home-info-card">
+            <div>👑</div>
+            <h4>Joki push rank</h4>
+            <p>Pakai kalkulator joki untuk menghitung target rank dan layanan express.</p>
+            <a href="Jokigame.php">Hitung Joki</a>
+        </article>
     </div>
 </section>
 
+<!-- FAQ -->
 <section class="container home-block">
     <div class="home-faq-card">
         <div class="home-section-head text-center">
@@ -181,18 +213,46 @@ require __DIR__ . '/includes/header.php';
         </div>
         <div class="accordion accordion-flush" id="homeFaq">
             <div class="accordion-item home-faq-item">
-                <h2 class="accordion-header"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq1">Apa itu AFone Store?</button></h2>
-                <div id="faq1" class="accordion-collapse collapse" data-bs-parent="#homeFaq"><div class="accordion-body">AFone Store adalah website PHP MySQL untuk layanan top up game, joki rank, beli akun, dan pengelolaan data melalui admin panel.</div></div>
+                <h2 class="accordion-header">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq1">
+                        Apa itu AFone Store?
+                    </button>
+                </h2>
+                <div id="faq1" class="accordion-collapse collapse" data-bs-parent="#homeFaq">
+                    <div class="accordion-body">
+                        AFone Store adalah website PHP MySQL untuk layanan top up game, joki rank, beli akun, dan pengelolaan data melalui admin panel.
+                    </div>
+                </div>
             </div>
             <div class="accordion-item home-faq-item">
-                <h2 class="accordion-header"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq2">Apakah nominal diamond bisa diubah?</button></h2>
-                <div id="faq2" class="accordion-collapse collapse" data-bs-parent="#homeFaq"><div class="accordion-body">Bisa. Masuk ke dashboard admin, lalu buka menu CRUD Nominal untuk tambah, edit, hapus, atau menonaktifkan paket.</div></div>
+                <h2 class="accordion-header">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq2">
+                        Apakah nominal diamond bisa diubah?
+                    </button>
+                </h2>
+                <div id="faq2" class="accordion-collapse collapse" data-bs-parent="#homeFaq">
+                    <div class="accordion-body">
+                        Bisa. Masuk ke dashboard admin, lalu buka menu CRUD Nominal untuk tambah, edit, hapus, atau menonaktifkan paket.
+                    </div>
+                </div>
             </div>
             <div class="accordion-item home-faq-item">
-                <h2 class="accordion-header"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq3">Bagaimana menambahkan foto game?</button></h2>
-                <div id="faq3" class="accordion-collapse collapse" data-bs-parent="#homeFaq"><div class="accordion-body">Masuk ke admin, buka CRUD Game, klik tambah atau edit game, lalu gunakan tombol upload gambar.</div></div>
+                <h2 class="accordion-header">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq3">
+                        Bagaimana menambahkan foto game?
+                    </button>
+                </h2>
+                <div id="faq3" class="accordion-collapse collapse" data-bs-parent="#homeFaq">
+                    <div class="accordion-body">
+                        Masuk ke admin, buka CRUD Game, klik tambah atau edit game, lalu gunakan tombol upload gambar.
+                    </div>
+                </div>
             </div>
         </div>
     </div>
 </section>
-<?php require __DIR__ . '/includes/footer.php'; ?>
+
+<?php
+// Sertakan footer
+require __DIR__ . '/includes/footer.php';
+?>

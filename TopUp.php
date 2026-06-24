@@ -20,25 +20,24 @@ require __DIR__ . '/includes/header.php';
         <div class="page-hero-box">
             <div class="section-kicker mb-2">Top Up Game</div>
             <h1 class="section-title mb-2">Pilih game, lalu pilih jumlah diamond/coin sesuai kebutuhan.</h1>
-            <p class="text-soft mb-0">Alurnya dibuat seperti website top up pada umumnya, tetapi tampilannya tetap memakai warna orange-hitam AFone Store.</p>
             <div class="promo-strip">
                 <div class="promo-box">
                     <div class="promo-emoji">💎</div>
                     <span>Promo Top Up</span>
                     <strong>Diamond, UC, Robux, VP, dan coin game.</strong>
-                    <p>Semua nominal bisa kamu kelola dari dashboard admin, termasuk harga dan status aktifnya.</p>
+                    <p>Harga bersaing, lebih murah dari harga resmi.</p>
                 </div>
                 <div class="promo-box small">
                     <div class="promo-emoji">⚡</div>
                     <span>Proses Cepat</span>
                     <strong>Order masuk ke admin.</strong>
-                    <p>Admin tinggal ubah status order dari dashboard.</p>
+                    <p>Top up langsung diproses, tidak perlu menunggu lama. Bisa juga lewat auto top up.</p>
                 </div>
                 <div class="promo-box small">
                     <div class="promo-emoji">🎮</div>
                     <span>Game Populer</span>
                     <strong>ML, FF, PUBG, Roblox.</strong>
-                    <p>Tambah game baru kapan saja lewat CRUD Game.</p>
+                    <p>Game populer tersedia, dan akan terus ditambahkan game baru.</p>
                 </div>
             </div>
         </div>
