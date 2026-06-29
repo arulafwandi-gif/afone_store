@@ -16,7 +16,47 @@ $topPackages = array_slice(fallback_packages(), 0, 6);
 // Sertakan header
 require __DIR__ . '/includes/header.php';
 ?>
+<section class="hero-banner">
 
+    <div class="container">
+
+        <div id="heroCarousel" class="carousel slide" data-bs-ride="carousel">
+
+            <div class="carousel-inner">
+
+                <div class="carousel-item active">
+                    <img src="assets/banner/banner1.jpg" alt="Banner 1">
+                </div>
+
+                <div class="carousel-item">
+                    <img src="assets/banner/banner2.jpg" alt="Banner 2">
+                </div>
+
+                <div class="carousel-item">
+                    <img src="assets/banner/banner3.jpg" alt="Banner 3">
+                </div>
+
+            </div>
+
+            <button class="carousel-control-prev"
+                    type="button"
+                    data-bs-target="#heroCarousel"
+                    data-bs-slide="prev">
+                <span class="carousel-control-prev-icon"></span>
+            </button>
+
+            <button class="carousel-control-next"
+                    type="button"
+                    data-bs-target="#heroCarousel"
+                    data-bs-slide="next">
+                <span class="carousel-control-next-icon"></span>
+            </button>
+
+        </div>
+
+    </div>
+
+</section>
 <!-- Promo Ticker -->
 <section class="home-ticker">
     <div class="container">
