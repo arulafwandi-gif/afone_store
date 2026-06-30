@@ -25,11 +25,11 @@ require __DIR__ . '/includes/header.php';
             <div class="carousel-inner">
 
                 <div class="carousel-item active">
-                    <img src="assets/banner/banner1.jpg" alt="Banner 1">
+                    <img src="https://cdn.rapspoint.com/banners/jokidiraps-harith-sl-juni-3105-banner-20260531143526-etOptS.png" alt="Banner 1">
                 </div>
 
                 <div class="carousel-item">
-                    <img src="assets/banner/banner2.jpg" alt="Banner 2">
+                    <img src="c:\Users\Hype G12\Downloads\ChatGPT Image 30 Jun 2026, 01.27.08.png" alt="Banner 2">
                 </div>
 
                 <div class="carousel-item">
@@ -60,15 +60,25 @@ require __DIR__ . '/includes/header.php';
 <!-- Promo Ticker -->
 <section class="home-ticker">
     <div class="container">
-        <div class="ticker-track">
-            <span>🔥 Promo top up hari ini</span>
-            <span>💎 Diamond MLBB & FF tersedia</span>
-            <span>⚡ Order cepat diproses admin</span>
-            <span>🛡️ Data akun aman dan bisa dicek</span>
-            <span>🎮 Joki rank reguler dan express</span>
+        <div class="ticker-wrap">
+            <div class="ticker-track">
+                <span>🔥 Promo top up hari ini</span>
+                <span>💎 Diamond MLBB & FF tersedia</span>
+                <span>⚡ Order cepat diproses admin</span>
+                <span>🛡️ Data akun aman dan bisa dicek</span>
+                <span>🎮 Joki rank reguler dan express</span>
+                <span>🔥 Promo top up hari ini</span>
+                <span>💎 Diamond MLBB & FF tersedia</span>
+                <span>⚡ Order cepat diproses admin</span>
+                <span>🛡️ Data akun aman dan bisa dicek</span>
+                <span>🎮 Joki rank reguler dan express</span>
+            </div>
         </div>
     </div>
 </section>
+
+
+<!-- Game Populer -->
 
 
 <!-- Game Populer -->

@@ -16,7 +16,7 @@ $activePage = $activePage ?? '';
 <nav class="navbar navbar-expand-lg sticky-top site-navbar">
     <div class="container">
         <a class="navbar-brand d-flex align-items-center gap-2" href="index.php">
-            <span class="brand-mark">A</span>
+            <span class="brand-mark">sul</span>
             <span>AFone Store</span>
         </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavbar" aria-controls="mainNavbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -25,7 +25,7 @@ $activePage = $activePage ?? '';
         <div class="collapse navbar-collapse" id="mainNavbar">
             <ul class="navbar-nav ms-auto align-items-lg-center gap-lg-2">
                 <li class="nav-item"><a class="nav-link <?= $activePage === 'home' ? 'active' : '' ?>" href="index.php">Beranda</a></li>
-                <li class="nav-item"><a class="nav-link <?= $activePage === 'topup' ? 'active' : '' ?>" href="TopUp.php">Top Up Game</a></li>
+                <li class="nav-item"><a class="nav-link <?= $activePage === 'topup' ? 'active' : '' ?>" href="TopUp.php">Top Up </a></li>
                 <li class="nav-item"><a class="nav-link <?= $activePage === 'joki' ? 'active' : '' ?>" href="Jokigame.php">Joki Rank</a></li>
                 <li class="nav-item"><a class="nav-link <?= $activePage === 'akun' ? 'active' : '' ?>" href="beli-akun.php">Beli Akun</a></li>
                 <li class="nav-item"><a class="nav-link <?= $activePage === 'prices' ? 'active' : '' ?>" href="daftar-harga.php">Daftar Harga</a></li>
