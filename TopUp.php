@@ -15,35 +15,47 @@ if ($query !== '') {
 }
 require __DIR__ . '/includes/header.php';
 ?>
-<section class="page-hero">
-    <div class="container">
-        <div class="page-hero-box">
-            <div class="section-kicker mb-2">Top Up Game</div>
-            <h1 class="section-title mb-2">Pilih game, lalu pilih jumlah diamond/coin sesuai kebutuhan.</h1>
-            <div class="promo-strip">
-                <div class="promo-box">
-                    <div class="promo-emoji">💎</div>
-                    <span>Promo Top Up</span>
-                    <strong>Diamond, UC, Robux, VP, dan coin game.</strong>
-                    <p>Harga bersaing, lebih murah dari harga resmi.</p>
-                </div>
-                <div class="promo-box small">
-                    <div class="promo-emoji">⚡</div>
-                    <span>Proses Cepat</span>
-                    <strong>Order masuk ke admin.</strong>
-                    <p>Top up langsung diproses, tidak perlu menunggu lama. Bisa juga lewat auto top up.</p>
-                </div>
-                <div class="promo-box small">
-                    <div class="promo-emoji">🎮</div>
-                    <span>Game Populer</span>
-                    <strong>ML, FF, PUBG, Roblox.</strong>
-                    <p>Game populer tersedia, dan akan terus ditambahkan game baru.</p>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
+<div id="bannerSlider" class="carousel slide mb-4" data-bs-ride="carousel">
 
+    <div class="carousel-indicators">
+        <button type="button" data-bs-target="#bannerSlider" data-bs-slide-to="0" class="active"></button>
+        <button type="button" data-bs-target="#bannerSlider" data-bs-slide-to="1"></button>
+        <button type="button" data-bs-target="#bannerSlider" data-bs-slide-to="2"></button>
+    </div>
+
+    <div class="carousel-inner">
+
+        <div class="carousel-item active">
+            <img src="assets/banner/banner1.jpg" class="d-block w-100 banner-img">
+        </div>
+
+        <div class="carousel-item">
+            <img src="assets/banner/banner2.jpg" class="d-block w-100 banner-img">
+        </div>
+
+        <div class="carousel-item">
+            <img src="assets/banner/banner3.jpg" class="d-block w-100 banner-img">
+        </div>
+
+    </div>
+
+    <button class="carousel-control-prev" type="button"
+        data-bs-target="#bannerSlider"
+        data-bs-slide="prev">
+
+        <span class="carousel-control-prev-icon"></span>
+
+    </button>
+
+    <button class="carousel-control-next" type="button"
+        data-bs-target="#bannerSlider"
+        data-bs-slide="next">
+
+        <span class="carousel-control-next-icon"></span>
+
+    </button>
+
+</div>
 <section class="container my-4">
     <form method="get" class="content-card mb-4 search-card">
         <input type="text" name="q" value="<?= e($query) ?>" class="form-control search-pill" placeholder="Cari game favoritmu, misalnya Mobile Legends atau Free Fire...">
@@ -66,13 +78,10 @@ require __DIR__ . '/includes/header.php';
         <div class="game-grid">
             <?php foreach ($games as $game): ?>
                 <a class="game-card" href="game.php?slug=<?= e($game['slug']) ?>">
-                    <?php if ((int)$game['is_popular'] === 1): ?><span class="game-badge">POPULER</span><?php endif; ?>
                     <div class="game-logo">
                         <?php if (!empty($game['image_url'])): ?><img src="<?= e(image_src($game['image_url'])) ?>" alt="<?= e($game['name']) ?>"><?php else: ?><?= e($game['icon_emoji'] ?: '🎮') ?><?php endif; ?>
                     </div>
                     <div class="game-name"><?= e($game['name']) ?></div>
-                    <div class="game-meta"><?= e(category_label($game['category'])) ?> • <?= e($game['publisher']) ?></div>
-                    <div class="mt-3 small text-warning fw-bold"><?= count(get_packages_by_game((int)$game['id'])) ?> nominal tersedia</div>
                 </a>
             <?php endforeach; ?>
         </div>
