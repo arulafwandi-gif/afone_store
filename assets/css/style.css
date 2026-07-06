@@ -1,19 +1,21 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
 
-:root {
-    --bg: #070b18;
-    --panel: #0e1629;
-    --panel-2: #111d35;
-    --line: rgba(255, 255, 255, .11);
-    --soft: #a9b4cf;
-    --white: #f7f8ff;
-    --yellow: #ffc94a;
-    --yellow-2: #ffad29;
-    --blue: #3a7afe;
-    --danger: #ff5a79;
-    --success: #42d392;
-}
+:root{
+    --bg:#0b0b0b;
+    --panel:#171717;
+    --panel-2:#202020;
 
+    --line:rgba(255,255,255,.08);
+
+    --white:#ffffff;
+    --soft:#bdbdbd;
+
+    --yellow:#ff7a1a;
+    --yellow-2:#ff9a3d;
+
+    --danger:#ff5a79;
+    --success:#42d392;
+}
 * {
     box-sizing: border-box
 }
@@ -22,10 +24,9 @@ body {
     margin: 0;
     font-family: 'Inter', system-ui, -apple-system, Segoe UI, sans-serif;
     color: var(--white);
-    background:
-        radial-gradient(circle at 10% 0%, rgba(58, 122, 254, .25), transparent 28rem),
-        radial-gradient(circle at 90% 8%, rgba(255, 201, 74, .18), transparent 24rem),
-        linear-gradient(180deg, #060a16 0%, #0a1020 50%, #070b18 100%);
+    background:#0b0b0b;
+    color:#fff;
+}
     min-height: 100vh;
 }
 
@@ -42,11 +43,9 @@ a {
     color: var(--yellow) !important
 }
 
-.site-navbar {
-    background: rgba(7, 11, 24, .82);
-    backdrop-filter: blur(16px);
-    border-bottom: 1px solid #ffad29 !important;
-    position: relative
+.site-navbar{
+    background:#000;
+    border-bottom:1px solid #ff7a1a;
 }
 
 .site-navbar::after {
@@ -295,6 +294,7 @@ a {
 
 .game-card {
     position: relative;
+    display: block;
     background: linear-gradient(180deg, rgba(22, 36, 65, .96), rgba(12, 18, 34, .96));
     border: 1px solid var(--line);
     border-radius: 18px;
@@ -1850,4 +1850,53 @@ a {
     width: 100%;
     height: 450px;
     object-fit: cover;
+}
+
+/* ===== AFONE DARK ORANGE OVERRIDE ===== */
+body{background:#0b0b0b!important;color:#fff!important;}
+.site-navbar,.site-footer{background:#000!important;}
+.hero-card,.page-hero-box,.promo-copy,.sale-card,.dual-shop-card,
+.home-joki-price-card,.home-account-card,.home-info-card,.home-faq-card,
+.home-why-card,.stat-card,.feature-card,.content-card,.form-card,
+.step-card,.admin-sidebar,.akun-card,.joki-summary-box,.price-table-card{
+background:#171717!important;
+background-image:none!important;
+}
+.game-card,.package-box,.payment-box,.guide-item,.home-game-tile,
+.home-scroll-chip,.category-tabs a,.joki-price-card{
+background:#111!important;
+background-image:none!important;
+}
+.form-control,.form-select{background:#111!important;}
+.btn-warning{
+background:#ff7a1a!important;
+color:#fff!important;
+box-shadow:none!important;
+}
+.btn-warning:hover{background:#ff9a3d!important;}
+/* ===== AFone Link Color ===== */
+
+.home-game-tile{
+    color:#fff !important;
+    text-decoration:none !important;
+}
+
+.home-game-tile strong{
+    color:#fff !important;
+}
+
+.home-game-tile small{
+    color:#a9a9a9 !important;
+}
+
+.home-game-tile:hover{
+    color:#ff7a1a !important;
+}
+
+.home-game-tile:hover strong{
+    color:#ff7a1a !important;
+}
+
+.home-game-tile:hover small{
+    color:#d6d6d6 !important;
 }
