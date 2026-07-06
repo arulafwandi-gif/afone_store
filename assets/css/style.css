@@ -84,7 +84,7 @@ a {
 }
 
 .nav-link {
-    color: #c9d2e7 !important;
+    color: #ffffff !important;
     font-weight: 600
 }
 
@@ -1744,9 +1744,18 @@ a {
         animation-duration: 14s
     }
 
-    .home-scroll-chip {
-        min-width: 160px
-    }
+    .home-scroll-chip{
+    min-width:320px;
+    height:120px;
+
+    border-radius:18px;
+
+    display:flex;
+    align-items:center;
+    gap:18px;
+
+    padding:20px;
+}
 
     .home-account-image {
         height: 160px
@@ -1876,3 +1885,44 @@ color:#fff!important;
 box-shadow:none!important;
 }
 .btn-warning:hover{background:#ff9a3d!important;}
+.game-marquee{
+    overflow:hidden;
+    width:100%;
+    margin:15px 0;
+}
+
+.game-track{
+    display:flex;
+    width:max-content;
+    gap:20px;
+}
+
+.marquee-top .game-track{
+    animation:slideRight 35s linear infinite;
+}
+
+.marquee-bottom .game-track{
+    animation:slideLeft 35s linear infinite;
+}
+
+.game-marquee:hover .game-track{
+    animation-play-state:paused;
+}
+
+@keyframes slideLeft{
+    from{
+        transform:translateX(0);
+    }
+    to{
+        transform:translateX(-50%);
+    }
+}
+
+@keyframes slideRight{
+    from{
+        transform:translateX(-50%);
+    }
+    to{
+        transform:translateX(0);
+    }
+}

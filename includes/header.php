@@ -16,16 +16,18 @@ $activePage = $activePage ?? '';
 <body>
 <nav class="navbar navbar-expand-lg sticky-top site-navbar">
     <div class="container">
-        <span class="brand-mark">
-    <video autoplay muted loop playsinline>
-        <source src="assets/logo/logo.mp4" type="video/mp4">
-    </video>
-</span>
+        <a class="navbar-brand" href="index.php">
+            <span class="brand-mark">
+                <video autoplay muted loop playsinline>
+                    <source src="assets/logo/logo.mp4" type="video/mp4">
+                </video>
+            </span>
+        </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavbar" aria-controls="mainNavbar" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="mainNavbar">
-            <ul class="navbar-nav ms-auto align-items-lg-center gap-lg-2">
+            <ul class="navbar-nav mx-auto align-items-lg-center gap-lg-2">
                 <li class="nav-item"><a class="nav-link <?= $activePage === 'home' ? 'active' : '' ?>" href="index.php">Beranda</a></li>
                 <li class="nav-item"><a class="nav-link <?= $activePage === 'topup' ? 'active' : '' ?>" href="TopUp.php">Top Up </a></li>
                 <li class="nav-item"><a class="nav-link <?= $activePage === 'joki' ? 'active' : '' ?>" href="Jokigame.php">Joki Rank</a></li>

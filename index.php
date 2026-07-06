@@ -84,8 +84,8 @@ require __DIR__ . '/includes/header.php';
 <!-- Game Populer -->
 <section class="container home-block">
     <div class="home-section-head text-center">
-        <span class="section-kicker">Top Up</span>
-        <h2>AFone Store</h2>
+        <span class="section-kicker">AFone Store</span>
+        <h2>Top Up Game</h2>
     </div>
 
     <form action="TopUp.php" method="get" class="home-search-wrap">
@@ -93,23 +93,37 @@ require __DIR__ . '/includes/header.php';
         <button class="btn btn-warning fw-bold" type="submit">Cari</button>
     </form>
 
-    <div class="home-popular-grid">
-        <?php foreach (array_slice($gamesForHome, 0, 6) as $game): ?>
-            <a class="home-game-tile" href="game.php?slug=<?= e($game['slug']) ?>">
-                <div class="home-game-thumb">
-                    <?php if (!empty($game['image_url'])): ?>
-                        <img src="<?= e(image_src($game['image_url'])) ?>" alt="<?= e($game['name']) ?>">
-                    <?php else: ?>
-                        <span><?= e($game['icon_emoji'] ?: '🎮') ?></span>
-                    <?php endif; ?>
-                </div>
-                <div>
-                    <strong><?= e($game['name']) ?></strong>
-                    <small><?= count(get_packages_by_game((int)$game['id'])) ?> nominal tersedia</small>
-                </div>
+   
+<!-- Joki & Top Up -->
+<section class="container home-block">
+    <div class="home-section-head text-center">
+
+    </div>
+   <div class="game-marquee marquee-top">
+    <div class="game-track">
+        <?php foreach ($allGames as $game): ?>
+            <a class="home-scroll-chip" href="game.php?slug=<?= e($game['slug']) ?>">
+                <span>
+                    <img src="<?= e(image_src($game['image_url'])) ?>">
+                </span>
+                <b><?= e($game['name']) ?></b>
+            </a>
+        <?php endforeach; ?>
+
+        <!-- ulangi lagi supaya tidak putus -->
+        <?php foreach ($allGames as $game): ?>
+            <a class="home-scroll-chip" href="game.php?slug=<?= e($game['slug']) ?>">
+                <span>
+                    <img src="<?= e(image_src($game['image_url'])) ?>">
+                </span>
+                <b><?= e($game['name']) ?></b>
             </a>
         <?php endforeach; ?>
     </div>
+</div>
+
+
+</section>
 </section>
 
 <!-- Jual Beli Akun -->
@@ -152,28 +166,6 @@ require __DIR__ . '/includes/header.php';
 </section>
 
 
-<!-- Joki & Top Up -->
-<section class="container home-block">
-    <div class="home-section-head text-center">
-        <span class="section-kicker">Joki & Top Up</span>
-        <h2>Layanan cepat untuk banyak game</h2>
-        <p>Pakai baris kartu horizontal supaya halaman utama terlihat hidup tanpa meniru desain referensi secara mentah.</p>
-    </div>
-    <div class="home-scroll-row">
-        <?php foreach (array_slice($allGames, 0, 10) as $game): ?>
-            <a class="home-scroll-chip" href="game.php?slug=<?= e($game['slug']) ?>">
-                <span>
-                    <?php if (!empty($game['image_url'])): ?>
-                        <img src="<?= e(image_src($game['image_url'])) ?>" alt="<?= e($game['name']) ?>">
-                    <?php else: ?>
-                        <?= e($game['icon_emoji'] ?: '🎮') ?>
-                    <?php endif; ?>
-                </span>
-                <b><?= e($game['name']) ?></b>
-            </a>
-        <?php endforeach; ?>
-    </div>
-</section>
 
 <!-- Daftar Harga Joki -->
 <section class="container home-block">
