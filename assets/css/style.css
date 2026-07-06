@@ -26,7 +26,7 @@ body {
     color: var(--white);
     background:#0b0b0b;
     color:#fff;
-}
+
     min-height: 100vh;
 }
 
@@ -64,17 +64,19 @@ a {
     letter-spacing: .2px
 }
 
-.brand-mark {
-    width: 38px;
-    height: 38px;
-    border-radius: 12px;
-    background: linear-gradient(135deg, var(--yellow), var(--yellow-2));
-    color: #141414;
-    display: inline-flex;
+.brand-mark{
+    width: 200px;      /* sesuaikan */
+    height: 45px;
+    overflow: hidden;
+    display: flex;
     align-items: center;
     justify-content: center;
-    font-weight: 900;
-    box-shadow: 0 10px 35px rgba(255, 201, 74, .25)
+}
+
+.brand-mark video{
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
 }
 
 .navbar-toggler {
@@ -1874,29 +1876,3 @@ color:#fff!important;
 box-shadow:none!important;
 }
 .btn-warning:hover{background:#ff9a3d!important;}
-/* ===== AFone Link Color ===== */
-
-.home-game-tile{
-    color:#fff !important;
-    text-decoration:none !important;
-}
-
-.home-game-tile strong{
-    color:#fff !important;
-}
-
-.home-game-tile small{
-    color:#a9a9a9 !important;
-}
-
-.home-game-tile:hover{
-    color:#ff7a1a !important;
-}
-
-.home-game-tile:hover strong{
-    color:#ff7a1a !important;
-}
-
-.home-game-tile:hover small{
-    color:#d6d6d6 !important;
-}

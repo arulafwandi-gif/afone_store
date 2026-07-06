@@ -12,13 +12,15 @@ $activePage = $activePage ?? '';
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="assets/css/style.css">
 </head>
+
 <body>
 <nav class="navbar navbar-expand-lg sticky-top site-navbar">
     <div class="container">
-        <a class="navbar-brand d-flex align-items-center gap-2" href="index.php">
-            <span class="brand-mark">sul</span>
-            <span>AFone Store</span>
-        </a>
+        <span class="brand-mark">
+    <video autoplay muted loop playsinline>
+        <source src="assets/logo/logo.mp4" type="video/mp4">
+    </video>
+</span>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavbar" aria-controls="mainNavbar" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>

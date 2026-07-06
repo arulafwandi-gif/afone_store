@@ -151,32 +151,6 @@ require __DIR__ . '/includes/header.php';
     </div>
 </section>
 
-<!-- Kenapa AFone -->
-<section class="home-why-section">
-    <div class="container">
-        <div class="home-section-head text-center">
-            <span class="section-kicker">Kenapa AFone?</span>
-            <h2>Layanan game dibuat lebih praktis</h2>
-        </div>
-        <div class="home-why-grid">
-            <div class="home-why-card">
-                <div>⚡</div>
-                <h4>Proses Kilat</h4>
-                <p>Order tersimpan otomatis agar admin bisa langsung cek dan update status.</p>
-            </div>
-            <div class="home-why-card">
-                <div>⭐</div>
-                <h4>Harga Tertata</h4>
-                <p>Nominal top up dan harga joki bisa diedit dari CRUD admin.</p>
-            </div>
-            <div class="home-why-card">
-                <div>🛡️</div>
-                <h4>Aman Bergaransi</h4>
-                <p>Data order, WhatsApp, dan detail game tercatat lebih rapi di database.</p>
-            </div>
-        </div>
-    </div>
-</section>
 
 <!-- Joki & Top Up -->
 <section class="container home-block">
