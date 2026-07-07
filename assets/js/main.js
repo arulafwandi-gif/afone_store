@@ -83,3 +83,14 @@ if(modal){
     });
 
 }
+document.addEventListener("DOMContentLoaded", function () {
+
+    document.querySelectorAll("input, textarea, select").forEach(function(el){
+
+        el.setAttribute("autocomplete","off");
+        el.setAttribute("spellcheck","false");
+        el.setAttribute("autocapitalize","off");
+
+    });
+
+});

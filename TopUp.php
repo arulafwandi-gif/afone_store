@@ -78,11 +78,15 @@ require __DIR__ . '/includes/header.php';
         <div class="game-grid">
             <?php foreach ($games as $game): ?>
                 <a class="game-card" href="game.php?slug=<?= e($game['slug']) ?>">
-                    <div class="game-logo">
-                        <?php if (!empty($game['image_url'])): ?><img src="<?= e(image_src($game['image_url'])) ?>" alt="<?= e($game['name']) ?>"><?php else: ?><?= e($game['icon_emoji'] ?: '🎮') ?><?php endif; ?>
-                    </div>
-                    <div class="game-name"><?= e($game['name']) ?></div>
-                </a>
+    <div class="game-logo">
+        <img src="<?= e(image_src($game['image_url'])) ?>">
+    </div>
+
+    <div class="game-info">
+        <div class="game-name"><?= e($game['name']) ?></div>
+        <div class="game-publisher"><?= e($game['publisher']) ?></div>
+    </div>
+</a>
             <?php endforeach; ?>
         </div>
     <?php endif; ?>

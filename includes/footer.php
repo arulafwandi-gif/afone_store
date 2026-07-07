@@ -10,6 +10,14 @@
                 <a href="TopUp.php">Top Up Game</a>
                 <a href="Jokigame.php">Joki Rank</a>
                 <a href="kontak.php">Kontak</a>
+                </li>
+                <?php if (is_logged_in()): ?>
+                    <li class="nav-item"><a class="btn btn-warning btn-sm fw-bold ms-lg-2" href="admin/index.php">Dashboard</a></li>
+                    <li class="nav-item"><a class="btn btn-outline-light btn-sm ms-lg-1" href="logout.php">Logout</a></li>
+                <?php else: ?>
+                    <li class="nav-item"><a class="btn btn-warning btn-sm fw-bold ms-lg-2" href="login.php">Login Admin</a></li>
+                <?php endif; ?>
+            </ul>
             </div>
             <div class="col-lg-3 col-6">
                 <h6>Kontak</h6>

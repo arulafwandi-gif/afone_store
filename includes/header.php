@@ -8,6 +8,7 @@ $activePage = $activePage ?? '';
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="assets/logo/logo.png">
     <title><?= e($pageTitle) ?></title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="assets/css/style.css">
@@ -43,6 +44,7 @@ $activePage = $activePage ?? '';
     </div>
 </div>
 
+
 <body>
 <nav class="navbar navbar-expand-lg sticky-top site-navbar">
     <div class="container">
@@ -58,26 +60,26 @@ $activePage = $activePage ?? '';
         </button>
         <div class="collapse navbar-collapse" id="mainNavbar">
             <ul class="navbar-nav mx-auto align-items-lg-center gap-lg-2">
-                <li class="nav-item"><a class="nav-link <?= $activePage === 'home' ? 'active' : '' ?>" href="index.php">Beranda</a></li>
-                <li class="nav-item"><a class="nav-link <?= $activePage === 'topup' ? 'active' : '' ?>" href="TopUp.php">Top Up </a></li>
-                <li class="nav-item"><a class="nav-link <?= $activePage === 'joki' ? 'active' : '' ?>" href="Jokigame.php">Joki Rank</a></li>
-                <li class="nav-item"><a class="nav-link <?= $activePage === 'akun' ? 'active' : '' ?>" href="beli-akun.php">Beli Akun</a></li>
-                <li class="nav-item"><a class="nav-link <?= $activePage === 'prices' ? 'active' : '' ?>" href="daftar-harga.php">Daftar Harga</a></li>
-                <li class="nav-item"><a class="nav-link <?= $activePage === 'contact' ? 'active' : '' ?>" href="kontak.php">Kontak</a></li>
+                <li class="nav-item"><a class="nav-link <?= $activePage === 'home' ? 'active' : '' ?>" href="index.php">BERANDA</a></li>
+                <li class="nav-item"><a class="nav-link <?= $activePage === 'topup' ? 'active' : '' ?>" href="TopUp.php">TOP UP </a></li>
+                <li class="nav-item"><a class="nav-link <?= $activePage === 'joki' ? 'active' : '' ?>" href="Jokigame.php">JOKI RANK</a></li>
+                <li class="nav-item"><a class="nav-link <?= $activePage === 'akun' ? 'active' : '' ?>" href="beli-akun.php">BELI AKUN</a></li>
+                <li class="nav-item"><a class="nav-link <?= $activePage === 'prices' ? 'active' : '' ?>" href="daftar-harga.php">DAFTAR HARGA</a></li>
+                <li class="nav-item"><a class="nav-link <?= $activePage === 'contact' ? 'active' : '' ?>" href="kontak.php">KONTAK</a></li>
                 <li class="nav-item ms-lg-3">
 <button class="search-navbar-btn"
         data-bs-toggle="modal"
         data-bs-target="#searchModal">
  Cari Game...
 </button>
+<li class="nav-item ms-2">
+    <button
+        class="btn btn-warning fw-bold"
+        data-bs-toggle="modal"
+        data-bs-target="#loginModal">
+        👤 Login
+    </button>
 </li>
-                <?php if (is_logged_in()): ?>
-                    <li class="nav-item"><a class="btn btn-warning btn-sm fw-bold ms-lg-2" href="admin/index.php">Dashboard</a></li>
-                    <li class="nav-item"><a class="btn btn-outline-light btn-sm ms-lg-1" href="logout.php">Logout</a></li>
-                <?php else: ?>
-                    <li class="nav-item"><a class="btn btn-warning btn-sm fw-bold ms-lg-2" href="login.php">Login Admin</a></li>
-                <?php endif; ?>
-            </ul>
         </div>
     </div>
 </nav>

@@ -23,7 +23,6 @@ require __DIR__ . '/includes/header.php';
         <div class="d-flex justify-content-between align-items-end flex-wrap gap-3 mb-3">
             <div>
                 <div class="section-kicker mb-1">Daftar Harga</div>
-                <h2 class="section-title mb-0">Pilih tipe layanan joki</h2>
             </div>
         </div>
         <ul class="nav nav-pills gap-2 mb-4" id="jokiTab" role="tablist">
