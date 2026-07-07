@@ -14,7 +14,6 @@ require __DIR__ . '/includes/header.php';
         <div class="page-hero-box">
             <div class="section-kicker mb-2">Joki Rank</div>
             <h1 class="section-title mb-2">Joki Ranked Mobile Legends</h1>
-            <p class="text-soft mb-0">Ada daftar harga reguler/express dan kalkulator estimasi biaya. Desain tetap mengikuti tema orange-hitam AFone Store.</p>
         </div>
     </div>
 </section>

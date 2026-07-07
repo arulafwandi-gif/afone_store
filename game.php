@@ -71,7 +71,6 @@ require __DIR__ . '/includes/header.php';
                         <input type="text" name="account_note" class="form-control" placeholder="Contoh: server Indonesia / login via Moonton">
                     </div>
                 </div>
-                <p class="text-soft small mb-0 mt-3">Petunjuk: untuk Mobile Legends biasanya ID ditulis seperti <strong>12345678 (1234)</strong>. Pastikan data benar karena kesalahan ID menjadi tanggung jawab pembeli.</p>
             </div>
 
             <div class="step-card">
@@ -106,7 +105,6 @@ require __DIR__ . '/includes/header.php';
                         <button type="button" class="btn btn-outline-warning w-100" id="applyPromo">Gunakan</button>
                     </div>
                 </div>
-                <p class="text-soft small mb-0 mt-3">Kode contoh yang aktif: <strong>HEMAT5</strong>, <strong>NEWUSER</strong>, <strong>AFONE10</strong>. Kamu bisa ubah logikanya di <code>includes/helpers.php</code>.</p>
             </div>
 
             <div class="step-card">
