@@ -88,11 +88,7 @@ require __DIR__ . '/includes/header.php';
         <h2>Top Up Game</h2>
     </div>
 
-    <form action="TopUp.php" method="get" class="home-search-wrap">
-        <input type="text" name="q" class="form-control" placeholder="Cari game favoritmu, misalnya Mobile Legends atau Free Fire...">
-        <button class="btn btn-warning fw-bold" type="submit">Cari</button>
-    </form>
-
+   
    
 <!-- Joki & Top Up -->
 <section class="container home-block">

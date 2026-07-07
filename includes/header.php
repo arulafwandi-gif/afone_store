@@ -12,32 +12,37 @@ $activePage = $activePage ?? '';
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="assets/css/style.css">
 </head>
-<script>
-window.addEventListener("load", function () {
 
-  const intro = document.getElementById("intro");
-const video = document.getElementById("introVideo");
 
-if (!sessionStorage.getItem("introPlayed")) {
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<div class="modal fade" id="searchModal" tabindex="-1">
+    <div class="modal-dialog modal-lg modal-dialog-centered">
+        <div class="modal-content bg-dark text-white">
 
-    video.play().catch(() => {});
+            <div class="modal-header border-secondary">
+                <h5 class="modal-title">Cari Game atau Joki</h5>
 
-    video.onended = () => {
-        intro.classList.add("hide");
+                <button class="btn-close btn-close-white"
+                    data-bs-dismiss="modal">
+                </button>
+            </div>
 
-        setTimeout(() => {
-            intro.remove();
-        },800);
+            <div class="modal-body">
 
-        sessionStorage.setItem("introPlayed","true");
-    };
+                <input
+                    type="text"
+                    id="searchInput"
+                    class="form-control"
+                    placeholder="Ketik nama game...">
 
-} else {
-    intro.remove();
-}
+                <div id="searchResult" class="mt-3"></div>
 
-});
-</script>
+            </div>
+
+        </div>
+    </div>
+</div>
+
 <body>
 <nav class="navbar navbar-expand-lg sticky-top site-navbar">
     <div class="container">
@@ -59,6 +64,13 @@ if (!sessionStorage.getItem("introPlayed")) {
                 <li class="nav-item"><a class="nav-link <?= $activePage === 'akun' ? 'active' : '' ?>" href="beli-akun.php">Beli Akun</a></li>
                 <li class="nav-item"><a class="nav-link <?= $activePage === 'prices' ? 'active' : '' ?>" href="daftar-harga.php">Daftar Harga</a></li>
                 <li class="nav-item"><a class="nav-link <?= $activePage === 'contact' ? 'active' : '' ?>" href="kontak.php">Kontak</a></li>
+                <li class="nav-item ms-lg-3">
+<button class="search-navbar-btn"
+        data-bs-toggle="modal"
+        data-bs-target="#searchModal">
+ Cari Game...
+</button>
+</li>
                 <?php if (is_logged_in()): ?>
                     <li class="nav-item"><a class="btn btn-warning btn-sm fw-bold ms-lg-2" href="admin/index.php">Dashboard</a></li>
                     <li class="nav-item"><a class="btn btn-outline-light btn-sm ms-lg-1" href="logout.php">Logout</a></li>
@@ -69,6 +81,35 @@ if (!sessionStorage.getItem("introPlayed")) {
         </div>
     </div>
 </nav>
+<div class="modal fade" id="searchModal" tabindex="-1">
+    <div class="modal-dialog modal-xl modal-dialog-centered">
+        <div class="modal-content search-popup">
+
+            <div class="modal-header">
+
+                <h4> Cari Game </h4>
+
+                <button class="btn-close"
+                        data-bs-dismiss="modal">
+                </button>
+
+            </div>
+
+            <div class="modal-body">
+
+                <input
+                    type="text"
+                    id="searchInput"
+                    class="form-control search-box"
+                    placeholder="Ketik nama game...">
+
+                <div id="searchResult" class="mt-4"></div>
+
+            </div>
+
+        </div>
+    </div>
+</div>
 <div id="intro">
     <video autoplay muted playsinline id="introVideo">
         <source src="assets/logo/intro.mp4" type="video/mp4">

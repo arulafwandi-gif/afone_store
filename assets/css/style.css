@@ -1961,3 +1961,99 @@ box-shadow:none!important;
     height:100%;
     object-fit:cover;
 }
+.search-popup{
+
+    background:#161616;
+    border-radius:18px;
+    color:white;
+
+}
+
+.search-box{
+
+    height:60px;
+    font-size:18px;
+    border-radius:15px;
+
+    background:#222;
+    color:white;
+
+    border:1px solid #333;
+}
+
+.search-box:focus{
+
+    background:#222;
+    color:white;
+    border-color:#ff8800;
+    box-shadow:none;
+
+}
+
+#searchResult{
+
+    max-height:500px;
+    overflow-y:auto;
+
+}
+.search-item{
+
+display:flex;
+align-items:center;
+
+gap:15px;
+
+padding:12px;
+
+border-radius:12px;
+
+text-decoration:none;
+
+color:white;
+
+margin-bottom:10px;
+
+transition:.2s;
+
+}
+
+.search-item:hover{
+
+background:#242424;
+
+}
+
+.search-item img{
+
+width:60px;
+
+height:60px;
+
+border-radius:12px;
+
+object-fit:cover;
+
+}
+.search-navbar-btn{
+    width:200px;
+    height:48px;
+
+    border:2px solid #ff8800;
+    border-radius:14px;
+
+    background:#1b1b1b;
+    color:#bdbdbd;
+
+    text-align:left;
+    padding:0 18px;
+
+    font-size:16px;
+
+    transition:.3s;
+}
+
+.search-navbar-btn:hover{
+    background:#252525;
+    color:#fff;
+    border-color:#ff9d2e;
+}
