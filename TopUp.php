@@ -58,7 +58,7 @@ require __DIR__ . '/includes/header.php';
 </div>
 <section class="container my-4">
     <form method="get" class="content-card mb-4 search-card">
-        <input type="text" name="q" value="<?= e($query) ?>" class="form-control search-pill" placeholder="Cari game favoritmu, misalnya Mobile Legends atau Free Fire...">
+        <input type="text" name="q" value="<?= e($query) ?>" class="form-control search-pill" placeholder="Cari game favoritmu...">
         <?php if ($category): ?><input type="hidden" name="category" value="<?= e($category) ?>"><?php endif; ?>
         <button class="btn btn-warning fw-bold" type="submit">Cari Game</button>
     </form>

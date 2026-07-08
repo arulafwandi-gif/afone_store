@@ -43,7 +43,74 @@ $activePage = $activePage ?? '';
         </div>
     </div>
 </div>
+<div class="modal fade" id="loginModal" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
 
+        <div class="modal-content bg-dark text-white">
+
+            <div class="modal-header border-secondary">
+
+                <h5 class="modal-title">
+                    Login User
+                </h5>
+
+                <button
+                    class="btn-close btn-close-white"
+                    data-bs-dismiss="modal">
+                </button>
+
+            </div>
+
+            <div class="modal-body">
+
+                <form action="login-user.php" method="POST">
+
+                    <div class="mb-3">
+                        <label>Email</label>
+
+                        <input
+                            type="email"
+                            class="form-control"
+                            name="email"
+                            required>
+                    </div>
+
+                    <div class="mb-3">
+
+                        <label>Password</label>
+
+                        <input
+                            type="password"
+                            class="form-control"
+                            name="password"
+                            required>
+
+                    </div>
+
+                    <button class="btn btn-warning w-100">
+                        Login
+                    </button>
+
+                </form>
+
+                <hr>
+
+                <p class="text-center mb-0">
+
+                    Belum punya akun?
+
+                    <a href="register.php">
+                        Daftar Sekarang
+                    </a>
+
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+</div>
 
 <body>
 <nav class="navbar navbar-expand-lg sticky-top site-navbar">

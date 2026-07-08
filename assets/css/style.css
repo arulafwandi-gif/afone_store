@@ -2069,3 +2069,20 @@ object-fit:cover;
     color:#fff;
     border-color:#ff9d2e;
 }
+.modal-content{
+    border-radius:18px;
+    border:1px solid rgba(255,255,255,.08);
+}
+
+.modal-content input{
+    background:#222;
+    border:1px solid #333;
+    color:white;
+}
+
+.modal-content input:focus{
+    background:#222;
+    color:white;
+    border-color:#ff8c00;
+    box-shadow:0 0 0 .2rem rgba(255,140,0,.2);
+}
