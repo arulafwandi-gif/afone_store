@@ -20,7 +20,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $rankName = trim($_POST['rank_name'] ?? '');
     $rankOrder = (int)($_POST['rank_order'] ?? 0);
     $price = (float)str_replace(['.', ','], ['', '.'], $_POST['price'] ?? '0');
-    $icon = trim($_POST['icon'] ?? '🏆');
+    $icon = trim($_POST['icon'] ?? '');
+
+    if (!empty($_FILES['icon_file']['name'])) {
+        $uploadDir = '../uploads/joki/';
+        if (!is_dir($uploadDir)) mkdir($uploadDir, 0777, true);
+        $ext = strtolower(pathinfo($_FILES['icon_file']['name'], PATHINFO_EXTENSION));
+        $fileName = uniqid('rank_') . '.' . $ext;
+        move_uploaded_file($_FILES['icon_file']['tmp_name'], $uploadDir . $fileName);
+        $icon = 'uploads/joki/' . $fileName;
+    }
     $isActive = isset($_POST['is_active']) ? 1 : 0;
     if (!in_array($serviceType, ['reguler','express'], true) || $rankName === '') { flash('Tipe layanan dan rank wajib diisi.', 'danger'); redirect($isEdit ? 'joki-service-form.php?id='.$id : 'joki-service-form.php'); }
     try {
@@ -43,11 +52,13 @@ $activeAdmin = 'joki';
 require __DIR__ . '/_header.php';
 ?>
 <div class="d-flex justify-content-between align-items-center flex-wrap gap-2 mb-4"><div><h1 class="section-title mb-1"><?= $isEdit ? 'Edit Harga Joki' : 'Tambah Harga Joki' ?></h1><p class="text-soft mb-0">Harga ini muncul di halaman Joki.</p></div><a href="joki-services.php" class="btn btn-outline-light">Kembali</a></div>
-<div class="form-card"><form method="post"><input type="hidden" name="id" value="<?= (int)$id ?>"><div class="row g-3">
+<div class="form-card"><form method="post" enctype="multipart/form-data"><input type="hidden" name="id" value="<?= (int)$id ?>"><div class="row g-3">
     <div class="col-md-6"><label class="form-label">Game</label><select name="game_id" class="form-select"><?php foreach ($games as $game): ?><option value="<?= (int)$game['id'] ?>" <?= (int)$service['game_id']===(int)$game['id']?'selected':'' ?>><?= e($game['name']) ?></option><?php endforeach; ?></select></div>
     <div class="col-md-6"><label class="form-label">Tipe Layanan</label><select name="service_type" class="form-select"><option value="reguler" <?= $service['service_type']==='reguler'?'selected':'' ?>>Reguler</option><option value="express" <?= $service['service_type']==='express'?'selected':'' ?>>Express</option></select></div>
     <div class="col-md-5"><label class="form-label">Nama Rank</label><input type="text" name="rank_name" class="form-control" value="<?= e($service['rank_name']) ?>" placeholder="Epic / Mythic" required></div>
-    <div class="col-md-2"><label class="form-label">Icon</label><input type="text" name="icon" class="form-control" value="<?= e($service['icon']) ?>"></div>
+    <div class="col-md-4"><label class="form-label">URL Icon</label><input type="url" name="icon" class="form-control" value="<?= e($service['icon']) ?>"></div>
+    <div class="col-md-4"><label class="form-label">Upload Icon</label><input type="file" name="icon_file" class="form-control" accept="image/*"><small class="text-muted">Opsional, maksimal 2 MB.</small></div>
+    <div class="col-md-3"><?php if(!empty($service['icon'])): ?><label class="form-label">Preview</label><br><img src="../<?= e($service['icon']) ?>" style="width:60px;height:60px;object-fit:contain;border:1px solid #444;padding:5px;border-radius:8px;"><?php endif; ?></div>
     <div class="col-md-2"><label class="form-label">Urutan</label><input type="number" name="rank_order" class="form-control" value="<?= (int)$service['rank_order'] ?>"></div>
     <div class="col-md-3"><label class="form-label">Harga</label><input type="number" name="price" class="form-control" value="<?= e((string)$service['price']) ?>" min="0" step="100" required></div>
     <div class="col-12"><div class="form-check"><input class="form-check-input" type="checkbox" name="is_active" id="is_active" <?= (int)$service['is_active']===1?'checked':'' ?>><label class="form-check-label" for="is_active">Aktif di website</label></div></div>
