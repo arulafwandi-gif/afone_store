@@ -30,22 +30,51 @@ require __DIR__ . '/includes/header.php';
             <li class="nav-item" role="presentation"><button class="btn btn-outline-warning" data-bs-toggle="tab" data-bs-target="#expressTab" type="button">Express</button></li>
         </ul>
         <div class="tab-content">
-            <div class="tab-pane fade show active" id="regularTab">
-                <div class="joki-price-grid">
-                    <?php foreach ($regular as $item): ?>
-                        <div class="joki-price-card"><span><?= e($item['icon'] ?: '🏆') ?></span><div><strong><?= e($item['rank_name']) ?></strong><small><?= rupiah($item['price']) ?></small></div></div>
-                    <?php endforeach; ?>
+         <div class="tab-pane fade show active" id="regularTab">
+    <div class="joki-price-grid">
+        <?php foreach ($regular as $item): ?>
+            <div class="joki-price-card">
+
+                <?php if (!empty($item['icon'])): ?>
+                    <img src="<?= e($item['icon']) ?>"
+                         alt="<?= e($item['rank_name']) ?>"
+                         class="joki-icon">
+                <?php else: ?>
+                    <span>🏆</span>
+                <?php endif; ?>
+
+                <div>
+                    <strong><?= e($item['rank_name']) ?></strong>
+                    <small><?= rupiah($item['price']) ?></small>
                 </div>
+
             </div>
-            <div class="tab-pane fade" id="expressTab">
-                <div class="joki-price-grid">
-                    <?php foreach ($express as $item): ?>
-                        <div class="joki-price-card"><span><?= e($item['icon'] ?: '⚡') ?></span><div><strong><?= e($item['rank_name']) ?></strong><small><?= rupiah($item['price']) ?></small></div></div>
-                    <?php endforeach; ?>
-                </div>
-            </div>
-        </div>
+        <?php endforeach; ?>
     </div>
+</div>
+         <div class="tab-pane fade" id="expressTab">
+    <div class="joki-price-grid">
+        <?php foreach ($express as $item): ?>
+            <div class="joki-price-card">
+
+                <?php if (!empty($item['icon'])): ?>
+                    <img src="<?= e($item['icon']) ?>"
+                         alt="<?= e($item['rank_name']) ?>"
+                         class="joki-icon">
+                <?php else: ?>
+                    <span>⚡</span>
+                <?php endif; ?>
+
+                <div>
+                    <strong><?= e($item['rank_name']) ?></strong>
+                    <small><?= rupiah($item['price']) ?></small>
+                </div>
+
+            </div>
+        <?php endforeach; ?>
+    </div>
+</div>
+        </div>
 
     <form action="joki-order.php" method="post" class="content-card mb-4" id="jokiCalculator">
         <div class="row g-4">

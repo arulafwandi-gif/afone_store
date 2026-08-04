@@ -66,12 +66,10 @@ require __DIR__ . '/includes/header.php';
                 <span>💎 Diamond MLBB & FF tersedia</span>
                 <span>⚡ Order cepat diproses admin</span>
                 <span>🛡️ Data akun aman dan bisa dicek</span>
-                <span>🎮 Joki rank reguler dan express</span>
                 <span>🔥 Promo top up hari ini</span>
                 <span>💎 Diamond MLBB & FF tersedia</span>
                 <span>⚡ Order cepat diproses admin</span>
                 <span>🛡️ Data akun aman dan bisa dicek</span>
-                <span>🎮 Joki rank reguler dan express</span>
             </div>
         </div>
     </div>
@@ -152,30 +150,6 @@ require __DIR__ . '/includes/header.php';
 
 
 
-<!-- Daftar Harga Joki -->
-<section class="container home-block">
-    <div class="home-joki-price-card">
-        <div class="d-flex justify-content-between align-items-end flex-wrap gap-3 mb-3">
-            <div>
-                <span class="section-kicker">Joki Rank</span>
-                <h2 class="mb-1">Daftar harga joki reguler</h2>
-                <p class="text-soft mb-0">Tampilan ringkas di halaman utama, detail lengkap tetap ada di menu Joki.</p>
-            </div>
-            <a href="Jokigame.php" class="btn btn-warning fw-bold">Buka Kalkulator</a>
-        </div>
-        <div class="home-joki-mini-grid">
-            <?php foreach (array_slice($regularJoki, 0, 6) as $service): ?>
-                <div class="home-joki-mini">
-                    <span><?= e($service['icon'] ?? '🏆') ?></span>
-                    <div>
-                        <strong><?= e($service['rank_name']) ?></strong>
-                        <small><?= rupiah($service['price']) ?></small>
-                    </div>
-                </div>
-            <?php endforeach; ?>
-        </div>
-    </div>
-</section>
 
 <!-- Info Terbaru -->
 <section class="container home-block">

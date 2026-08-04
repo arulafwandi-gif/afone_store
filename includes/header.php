@@ -129,7 +129,6 @@ $activePage = $activePage ?? '';
             <ul class="navbar-nav mx-auto align-items-lg-center gap-lg-2">
                 <li class="nav-item"><a class="nav-link <?= $activePage === 'home' ? 'active' : '' ?>" href="index.php">BERANDA</a></li>
                 <li class="nav-item"><a class="nav-link <?= $activePage === 'topup' ? 'active' : '' ?>" href="TopUp.php">TOP UP </a></li>
-                <li class="nav-item"><a class="nav-link <?= $activePage === 'joki' ? 'active' : '' ?>" href="Jokigame.php">JOKI RANK</a></li>
                 <li class="nav-item"><a class="nav-link <?= $activePage === 'akun' ? 'active' : '' ?>" href="beli-akun.php">BELI AKUN</a></li>
                 <li class="nav-item"><a class="nav-link <?= $activePage === 'prices' ? 'active' : '' ?>" href="daftar-harga.php">DAFTAR HARGA</a></li>
                 <li class="nav-item"><a class="nav-link <?= $activePage === 'contact' ? 'active' : '' ?>" href="kontak.php">KONTAK</a></li>
