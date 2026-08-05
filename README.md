@@ -17,7 +17,8 @@ Website top up game dan jual akun game berbasis web menggunakan PHP Native dan M
 
 ### Beli Akun
 
-![Beli Akun](assets/readme/beli-akun.png)
+<img width="1919" height="1079" alt="image" src="https://github.com/user-attachments/assets/2652aa97-7aa8-49cc-8749-4d0c618c4f4d" />
+
 
 ### Dashboard Admin
 
