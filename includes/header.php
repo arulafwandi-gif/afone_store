@@ -138,14 +138,7 @@ $activePage = $activePage ?? '';
         data-bs-target="#searchModal">
  Cari Game...
 </button>
-<li class="nav-item ms-2">
-    <button
-        class="btn btn-warning fw-bold"
-        data-bs-toggle="modal"
-        data-bs-target="#loginModal">
-        👤 Login
-    </button>
-</li>
+
         </div>
     </div>
 </nav>

@@ -73,7 +73,7 @@ require __DIR__ . '/includes/header.php';
     </div>
 
     <?php if (!$games): ?>
-        <div class="empty-state content-card">Game tidak ditemukan. Tambahkan game lewat dashboard admin atau ubah kata kunci.</div>
+        <div class="empty-state content-card">Game tidak ditemukan.</div>
     <?php else: ?>
         <div class="game-grid">
             <?php foreach ($games as $game): ?>

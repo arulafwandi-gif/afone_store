@@ -9,8 +9,8 @@ require __DIR__ . '/includes/header.php';
     <div class="container">
         <div class="page-hero-box">
             <div class="section-kicker mb-2">Daftar Harga</div>
-            <h1 class="section-title mb-2">Daftar harga top up game</h1>
-            <p class="text-soft mb-0">Halaman ringkasan harga untuk memudahkan pelanggan melihat nominal yang tersedia sebelum masuk ke halaman order.</p>
+            <h1 class="section-title mb-2">Top Up Game Murah & Terpercaya</h1>
+            <p class="text-soft mb-0">Lihat daftar harga terbaru untuk berbagai game populer. Semua transaksi diproses dengan cepat, aman, dan menggunakan metode pembayaran yang mudah.</p>
         </div>
     </div>
 </section>
