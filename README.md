@@ -21,7 +21,8 @@ Website top up game dan jual akun game berbasis web menggunakan PHP Native dan M
 
 ### Dashboard Admin
 
-![Dashboard](assets/readme/dashboard.png)
+<img width="1917" height="1078" alt="Screenshot 2026-08-05 212033" src="https://github.com/user-attachments/assets/de6f56fd-defa-4420-8d8a-e2382928441c" />
+
 
 ---
 
