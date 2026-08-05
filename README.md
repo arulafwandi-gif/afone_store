@@ -140,7 +140,6 @@ database.sql
 
 Muhammad Sahrul Afwandi
 
-Universitas Teknologi Mataram
 
 ---
 
