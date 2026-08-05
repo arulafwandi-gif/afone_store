@@ -8,7 +8,8 @@ Website top up game dan jual akun game berbasis web menggunakan PHP Native dan M
 
 ### Beranda
 
-![Beranda](assets/readme/home.png)
+![Beranda](<img width="1915" height="1067" alt="Screenshot 2026-08-05 211204" src="https://github.com/user-attachments/assets/62f48121-1732-4aaf-a042-06b3625d45b7" />
+)
 
 ### Top Up
 
@@ -136,7 +137,7 @@ database.sql
 
 # 👨‍💻 Developer
 
-**Nama Kamu**
+Muhammad Sahrul Afwandi
 
 Universitas Teknologi Mataram
 
