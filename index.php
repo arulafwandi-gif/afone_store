@@ -25,7 +25,7 @@ require __DIR__ . '/includes/header.php';
             <div class="carousel-inner">
 
                 <div class="carousel-item active">
-                    <img src="https://cdn.rapspoint.com/banners/jokidiraps-harith-sl-juni-3105-banner-20260531143526-etOptS.png" alt="Banner 1">
+                    <img src="assets/banner/banner.jpg" alt="Banner 1">
                 </div>
 
                 <div class="carousel-item">
@@ -114,7 +114,7 @@ require __DIR__ . '/includes/header.php';
     <div class="dual-shop-card">
         <div>
             <span class="section-kicker">Jual Beli Akun</span>
-            <h2>Stok akun game siap dipilih</h2>
+            <h2>Temukan Akun Game Berkualitas.</h2>
             <a href="beli-akun.php?game_id=1">Mobile Legends</a>
             <a href="beli-akun.php?game_id=2">Free Fire</a>
         </div>

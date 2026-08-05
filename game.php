@@ -34,7 +34,6 @@ require __DIR__ . '/includes/header.php';
         <div class="d-flex justify-content-between align-items-start flex-wrap gap-3">
             <div>
                 <div class="section-kicker mb-2">Cara Top Up</div>
-                <h3 class="fw-bold mb-2">Ikuti alur order seperti website top up game pada umumnya.</h3>
                 <p class="text-soft mb-0">Masukkan ID akun, pilih nominal, masukkan kode promo bila ada, pilih pembayaran, lalu isi kontak aktif.</p>
             </div>
             <a href="TopUp.php" class="btn btn-outline-warning">Pilih Game Lain</a>

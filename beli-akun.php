@@ -12,7 +12,7 @@ require __DIR__ . '/includes/header.php';
         <div class="page-hero-box text-center">
             <div class="section-kicker mb-2">Beli Akun</div>
             <h1 class="section-title mb-2">Koleksi akun game AFone Store</h1>
-            <p class="text-soft mb-0">Pilih akun game siap pakai. Data akun bisa ditambah, diedit, dan dihapus dari dashboard admin.</p>
+            <p class="text-soft mb-0">Temukan akun game favoritmu di sini!</p>
         </div>
     </div>
 </section>
