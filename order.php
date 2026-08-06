@@ -86,9 +86,41 @@ require __DIR__ . '/includes/header.php';
                     <?php if ($promoCode !== ''): ?><div class="summary-line"><span class="text-soft">Promo</span><strong><?= e($promoCode) ?> (-<?= rupiah($discount) ?>)</strong></div><?php endif; ?>
                     <div class="summary-line"><span class="text-soft">Total Bayar</span><strong class="summary-price"><?= rupiah($total) ?></strong></div>
                 </div>
-                <div class="alert alert-dark border-warning text-soft text-start mt-4">
-                    Pembayaran belum otomatis. Setelah transfer, hubungi admin dan kirim kode order <strong>#<?= (int)$orderId ?></strong> agar pesanan lebih cepat diproses.
-                </div>
+                <div class="content-card mt-4 text-center">
+
+    <h4 class="mb-3">Scan QRIS</h4>
+
+    <img src="assets/images/qris-demo.png"
+         class="img-fluid rounded"
+         style="max-width:280px;">
+
+    <div class="mt-3">
+
+        <p class="mb-1">
+            <strong>Merchant</strong><br>
+            AFone Store
+        </p>
+
+        <p class="mb-1">
+            <strong>Total Pembayaran</strong>
+        </p>
+
+        <h3 class="text-warning">
+            <?= rupiah($total) ?>
+        </h3>
+
+        <span class="badge bg-warning text-dark">
+            Menunggu Pembayaran
+        </span>
+
+    </div>
+
+</div>
+
+<div class="alert alert-warning mt-4">
+    <strong>Demo QRIS</strong><br>
+    QR ini hanya untuk tampilan website dan tidak dapat digunakan untuk pembayaran.
+</div>
                 <div class="d-flex gap-2 justify-content-center flex-wrap mt-4">
                     <a href="game.php?slug=<?= e($game['slug']) ?>" class="btn btn-warning fw-bold">Order Lagi</a>
                     <a href="TopUp.php" class="btn btn-outline-light">Kembali ke Daftar Game</a>
